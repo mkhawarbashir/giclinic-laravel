@@ -10,11 +10,14 @@
      <meta name="author" content="Tooplate">
      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
+     
      <link rel="stylesheet" href="css/bootstrap.min.css">
      <link rel="stylesheet" href="css/font-awesome.min.css">
      <link rel="stylesheet" href="css/animate.css">
      <link rel="stylesheet" href="css/owl.carousel.css">
      <link rel="stylesheet" href="css/owl.theme.default.min.css">
+     <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+
 
      <!-- MAIN CSS -->
      <link rel="stylesheet" href="css/tooplate-style.css">
@@ -162,6 +165,18 @@
                 <script src="js/smoothscroll.js"></script>
                 <script src="js/owl.carousel.min.js"></script>
                 <script src="js/custom.js"></script>
+                <script src="js/moment.min.js"></script>
+                <script src="js/bootstrap-datepicker.js"></script>
+
+
+                <script type="text/javascript">
+                        $('#datepicker').datepicker({
+                            daysOfWeekDisabled: [0,6],
+                            startDate: '+1d',
+                            endDate: '+14d'
+                            
+                            });
+                </script>
 
         @show
     </div>

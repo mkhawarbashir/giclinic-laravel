@@ -237,10 +237,11 @@
                                         <input type="text" class="form-control" id="lname" name="lname" placeholder="Last Name" required>
                                    </div>
 
-                                   <div class="col-md-6 col-sm-6">
+                                   <div class="col-md-6 col-sm-6 ">
 									    <span style="color:red;font-weight:bold">*</span>
                                         <label for="date">Select Date</label>
-                                        <input type="date" name="date" id="date" value="" class="form-control" required>
+                                        <input type="text" name="date" id="datepicker" value="" class="form-control" required>
+                                        
                                    </div>
 
                                    <div class="col-md-6 col-sm-6">
@@ -299,7 +300,7 @@
                                    </div>
                               </div>
                         </form>
-                       	
+                       
                     </div>
 
                </div>
@@ -317,5 +318,5 @@
 	-->
           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13601.781170546043!2d74.35263019999996!3d31.53939190000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x5dcfaeeb2a761500!2sLiver%20and%20Stomach%20clinic%2C%20Professor%20Muhammad%20Imran!5e0!3m2!1sen!2s!4v1585036063177!5m2!1sen!2s" width="100%" height="350" frameborder="0" style="border:0" allowfullscreen></iframe>
      </section>           
-
+     
 @endsection
