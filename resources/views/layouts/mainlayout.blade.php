@@ -55,7 +55,7 @@
                          <li><a href="#team" class="smoothScroll">Our Services</a></li>
                          <li><a href="#news" class="smoothScroll">News</a></li>
                          <li><a href="#google-map" class="smoothScroll">Contact</a></li>
-                         <li class="appointment-btn"><a href="#appointment">Make Appointment</a></li>
+                         <li class="appointment-btn"><a href="/#appointment">Make Appointment</a></li>
 						 <li class="appointment-btn"><a href="/clinic_user">Clinic Staff Login</a></li>
                     </ul>
                </div>

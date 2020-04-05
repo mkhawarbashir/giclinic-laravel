@@ -23,8 +23,20 @@ class usermodel extends Model
          }else{
            return 0;
          }
-     
       }
-    
+
+
+    public static function insert_appointment($data, $forid){ ///Need to work on this
+        $id = DB::table('patient_personal')->where('cnic', $forid['cnic'])->value('patient_id');
+        $iddata = array('patient_id'=>$id);
+        $data = $iddata + $data;
+        if($id){
+          DB::table('appointment')->insert($data);
+          return 1;
+         }else{
+           return 0;
+         }
+     
+    }
 
 }

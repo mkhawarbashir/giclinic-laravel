@@ -31,26 +31,27 @@ class usercontroller extends Controller
              $cnic = $request->input('cnic');
              $phone = $request->input('phone');
              $city = $request->input('city');
+             $date = $request->input('date');
+             $time = $request->input('time');
+             $forid = array('cnic'=>$cnic);
     
-             if($fname !='' && $lname !='' && $cnic != '' && $phone != '' && $city != ''){
+             if($fname !='' && $lname !='' && $cnic != '' && $phone != '' && $city != '' && $date !='' && $time != ''){
                 $data = array('first_name'=>$fname,"last_name"=>$lname,"cnic"=>$cnic,"contact_number"=>$phone,"city"=>$city);
-     
+                $data1 = array('date'=>date('Y-m-d', strtotime($date)), 'time'=>$time,'type'=>'Online');
                 // Insert
                 $value = usermodel::insert_patient_personal($data);
-              //  if($value){
-                //  Session::flash('message','Insert successfully.');
-                //}else{
-                 // Session::flash('message','Username already exists.');
-               // }
-     
-             }
-             if($value){
-                 
-                return redirect('/')->with('success','Record has been submitted successfully');
+              
+                $value = usermodel::insert_appointment($data1, $forid);
+                if($value){ 
+                return redirect('/')->with('success','Dear '. $fname . ' '. $lname . '. Your appointment for '. $date . ' at '. $time . ' has been made successfully');
+                }
+                else{
+                    return redirect('/')->with('info', 'Selected date or time has already been booked. Select any other.');   
+                }
              }
              else{
                  
-                 return redirect('/')->with('info', 'Record Already Exists');
+                 return redirect('/')->with('info', 'Fill in the required information');
              }
 
       }
