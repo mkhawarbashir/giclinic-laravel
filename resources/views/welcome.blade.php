@@ -240,31 +240,18 @@
                                    <div class="col-md-6 col-sm-6 ">
 									    <span style="color:red;font-weight:bold">*</span>
                                         <label for="date">Select Date</label>
-                                        <input type="text" name="date" id="datepicker" value="" class="form-control" required>
+                                        <input type="text" name="datepicker" id="datepicker" value="" class="form-control dynamic" required placeholder="-- Select Date --">
                                         
                                    </div>
 
                                    <div class="col-md-6 col-sm-6">
                                         <label for="select">Select Time</label>
                                         <select class="form-control" id="time" name="time">
-                                             <option>06:00</option>
-                                             <option>06:15</option>
-                                             <option>06:30</option>
-                                             <option>06:45</option>
-											 <option>07:00</option>
-                                             <option>07:15</option>
-                                             <option>07:30</option>
-                                             <option>07:45</option>
-											 <option>08:00</option>
-                                             <option>08:15</option>
-                                             <option>08:30</option>
-                                             <option>08:45</option>
-											 <option>09:00</option>
-                                             <option>09:15</option>
-                                             <option>09:30</option>
-                                             <option>09:45</option>
+                                             
                                         </select>
                                    </div>
+                                   {{ csrf_field() }}
+
 								   <div class="col-md-6 col-sm-6">
                                         <label for="select">Select Your City</label>
                                         <select class="form-control" id="city" name="city">
@@ -320,3 +307,4 @@
      </section>           
      
 @endsection
+

@@ -31,7 +31,7 @@ class usercontroller extends Controller
              $cnic = $request->input('cnic');
              $phone = $request->input('phone');
              $city = $request->input('city');
-             $date = $request->input('date');
+             $date = $request->input('datepicker');
              $time = $request->input('time');
              $forid = array('cnic'=>$cnic);
     

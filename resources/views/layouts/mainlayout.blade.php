@@ -50,11 +50,11 @@
                <!-- MENU LINKS -->
                <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
-                         <li><a href="#top" class="smoothScroll">Home</a></li>
-                         <li><a href="#about" class="smoothScroll">About Us</a></li>
-                         <li><a href="#team" class="smoothScroll">Our Services</a></li>
-                         <li><a href="#news" class="smoothScroll">News</a></li>
-                         <li><a href="#google-map" class="smoothScroll">Contact</a></li>
+                         <li><a href="/#top" class="smoothScroll">Home</a></li>
+                         <li><a href="/#about" class="smoothScroll">About Us</a></li>
+                         <li><a href="/#team" class="smoothScroll">Our Services</a></li>
+                         <li><a href="/#news" class="smoothScroll">News</a></li>
+                         <li><a href="/#google-map" class="smoothScroll">Contact</a></li>
                          <li class="appointment-btn"><a href="/#appointment">Make Appointment</a></li>
 						 <li class="appointment-btn"><a href="/clinic_user">Clinic Staff Login</a></li>
                     </ul>
@@ -172,13 +172,52 @@
                 <script type="text/javascript">
                         $('#datepicker').datepicker({
                             daysOfWeekDisabled: [0,6],
-                            startDate: '+1d',
-                            endDate: '+14d'
-                            
-                            });
+                            startDate: '+0d',
+                            endDate: '+13d',
+                            format: 'dd-mm-yyyy'
+                            }).on('changeDate', function(e) {
+                                var mydate = $(this).val();
+                                console.log(mydate);
+                            if(mydate) {
+                                $.ajax({
+                                    url: '/welcome/ajax/'+mydate,
+                                    type: "GET",
+                                    dataType: "json",
+                                    success:function(data) {
+                                        var booked = [];
+                                        var all = ['06:00 pm', '06:15 pm', '06:30 pm', '06:45 pm', '07:00 pm', '07:15 pm', '07:30 pm', '07:45 pm', '08:00 pm', '08:15 pm', '08:30 pm', '08:45 pm', '09:00 pm', '09:15 pm', '09:30 pm', '09:45 pm'];
+                                        
+                                        var len = data.length;
+                                            
+                                            $("#time").empty();
+                                            for( var i = 0; i<len; i++){
+                                                var id = data[i]['value'];
+                                                var name = data[i]['time'];
+                                                booked.push(data[i]['time']);        
+                                            }
+
+                                        var available = $(all).not(booked).get();
+                                        
+                                        for(var j=0; j<available.length; j++){
+
+                                            $("#time").append("<option>"+available[j]+"</option>");
+
+                                        }
+
+                                    }
+                                });
+                            }else{
+                                $('select[name="time"]').empty();
+                            }
+                        });
+                       // $("#datepicker").datepicker("setDate", '-- Select Date --');//new Date());
+                        
+                        
                 </script>
 
+               
         @show
     </div>
 </body>
 </html>
+
