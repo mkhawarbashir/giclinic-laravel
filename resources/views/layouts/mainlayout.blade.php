@@ -69,7 +69,7 @@
     </div>
     @yield('content')
     <div class="footer">
-        @section('footer')
+    @section('footer')
             <!-- FOOTER -->
                 <footer data-stellar-background-ratio="5">
                     <div class="container">
@@ -216,7 +216,7 @@
                 </script>
 
                
-        @show
+    @show
     </div>
 </body>
 </html>
