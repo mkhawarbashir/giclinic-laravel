@@ -21,6 +21,10 @@ Route::get('/clinic_user', function () {
     return view('clinic_user');
 });
 
+Route::get('/appointmentDetails', function () {
+    return view('appointmentDetails');
+});
+
 Route::post('appointmentsubmit','usercontroller@appointmentsubmit');
 Route::post('loaddata','usercontroller@loaddata');
 Route::get('welcome/ajax/{id}','DynamicDepdendent@welcomeAjax');
