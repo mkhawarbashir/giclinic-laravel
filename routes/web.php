@@ -28,3 +28,15 @@ Route::get('/appointmentDetails', function () {
 Route::post('appointmentsubmit','usercontroller@appointmentsubmit');
 Route::post('loaddata','usercontroller@loaddata');
 Route::get('welcome/ajax/{id}','DynamicDepdendent@welcomeAjax');
+
+//Route::get('blog', 'BlogPagesController@blog_index');
+
+/*Routes created for blog related pages using Route::resource('posts', 'BlogPagesController').
+    It will automatically create all necessary routes required for BlogPagesController. [MN - 11.Jun.2020]*/
+Route::resource('posts', 'BlogPagesController');
+
+//Define route for file upload. [MN - 11.Jun.2020]
+Route::post('ckeditor/image_upload', 'CKEditorController@upload')->name('upload');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
