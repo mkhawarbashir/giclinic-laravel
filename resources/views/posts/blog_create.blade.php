@@ -1,6 +1,6 @@
 @extends('layouts.bloglayout')
 
-<!--Created on . [MN - 07.Jun.2020]-->
+<!--Created on . [MN - 07.Jun.2020] -->
 
 @section('content')
     <h1>Create Blog Post</h1>

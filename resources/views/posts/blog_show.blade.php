@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-<!--Created on . [MN - 07.Jun.2020]-->
+<!--Created on . [MN - 07.Jun.2020] -->
 
 @section('content')
     <!--Code block commented for testing the code after it. [MN - 11.06.2020]

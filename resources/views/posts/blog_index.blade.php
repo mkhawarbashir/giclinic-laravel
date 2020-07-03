@@ -1,7 +1,7 @@
 @extends('layouts.bloglayout')
 {{-- @extends('layouts.mainlayout') --}}
 
-<!--Commented out below flash-message using @php @endphp tags. [MN - 07.Jun.2020]-->
+<!--Commented out below flash-message using @php @endphp tags. [MN - 07.Jun.2020] -->
 
 
 @section('content')

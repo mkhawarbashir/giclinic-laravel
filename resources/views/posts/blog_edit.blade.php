@@ -1,6 +1,6 @@
 @extends('layouts.bloglayout')
 
-<!--Created on . [MN - 11.Jun.2020]-->
+<!--Created on . [MN - 11.Jun.2020] -->
 
 @section('content')
 <h1>Edit Your Blog - {{$post->title}}</h1>
