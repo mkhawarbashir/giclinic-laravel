@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-     <title>GI Clinic</title>
+    <!--Configured Title (APP_NAME) in .env configuration file, any value set there will show as title. [MN - 07.Jun.2020]-->
+    <title>{{config('app.name')}}</title>
      <meta charset="UTF-8">
      <meta http-equiv="X-UA-Compatible" content="IE=Edge">
      <meta name="description" content="">
@@ -50,11 +50,12 @@
                <!-- MENU LINKS -->
                <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
-                         <li ><a href="/#top">Home</a></li>
-                         <li ><a href="/#about">About Us</a></li>
-                         <li ><a href="/#team">Our Services</a></li>
-                         <li ><a href="/#news">News</a></li>
-                         <li ><a href="/#google-map">Contact</a></li>
+                         <li><a href="/#top" class="smoothScroll">Home</a></li>
+                         <li><a href="/#team" class="smoothScroll">Our Services</a></li>
+                         <li><a href="/posts/#blog_index" class="smoothScroll">Blogs</a></li>
+                         <li><a href="/#news" class="smoothScroll">News</a></li>
+                         <li><a href="/#about" class="smoothScroll">About Us</a></li>
+                         <li><a href="/#google-map" class="smoothScroll">Contact</a></li>
                          <li class="appointment-btn"><a href="/#appointment">Make Appointment</a></li>
 						 <li class="appointment-btn"><a href="/clinic_user">Clinic Staff Login</a></li>
                     </ul>
@@ -132,7 +133,8 @@
                                 <div class="col-md-12 col-sm-12 border-top">
                                     <div class="col-md-4 col-sm-6">
                                         <div class="copyright-text"> 
-                                            <p>Copyright &copy; 2018 Your Company 
+                                            <!--Copyright year changed from 2018 to 2020. [MN - 07.Jun.2020]-->
+                                            <p>Copyright &copy; 2020 
                                             
                                             | Design: Tooplate</p>
                                         </div>
