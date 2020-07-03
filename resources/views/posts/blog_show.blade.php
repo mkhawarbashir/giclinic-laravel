@@ -1,6 +1,6 @@
-@extends('layouts.bloglayout')
+@extends('layouts.app')
 
-<!--Created on . [MN - 07.Jun.2020]-->
+<!--Created on . [MN - 07.Jun.2020] -->
 
 @section('content')
     <!--Code block commented for testing the code after it. [MN - 11.06.2020]
@@ -31,9 +31,9 @@
         <hr>
         <a href="/posts" class="btn btn-secondary">Back</a>
         <!--Added "if statement" below to remove Edit and Delete buttons for guest users.
-            But any logged in user can still edit / delete other user's post. [MN - 11.06.2020] -->
+            But any logged in user can still edit / delete other user's post. [MN - 28.06.2020] -->
         @if(!Auth::guest())
-            <!--Added another "if statement" below to restrict a user to only edit / delete his/her post. [MN - 11.06.2020] -->
+            <!--Added another "if statement" below to restrict a user to only edit / delete his/her post. [MN - 28.06.2020] -->
             @if(Auth::user()->id == $post->user_id)
                 <a href="/posts/{{$post->id}}/edit" class="btn btn-primary">Edit Post</a>
                 {!! Form::open(['action' => ['BlogPagesController@destroy', $post->id], 'method' => 'POST', 'class' => 'float-right'])!!}
