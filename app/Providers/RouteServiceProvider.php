@@ -21,7 +21,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/home';
+    public const DASHBOARD = '/dashboard'; //[MN - Change from HOME = '/home' to DASHBOARD = '/dashboard' 27.06.2020]
 
     /**
      * Define your route model bindings, pattern filters, etc.

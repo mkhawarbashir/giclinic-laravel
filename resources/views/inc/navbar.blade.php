@@ -47,14 +47,14 @@
 
           <ul class="navbar-nav">
             <li class="nav-item active">
-              <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
               <a class="nav-link" href="/about">About</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/services">Services</a>
-            </li>
+            </li> [MN - Commented on 28.06.2020]--}} 
             <li class="nav-item">
                 <a class="nav-link" href="/posts">Blog</a>
             </li>

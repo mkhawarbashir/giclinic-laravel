@@ -39,4 +39,8 @@ Route::resource('posts', 'BlogPagesController');
 Route::post('ckeditor/image_upload', 'CKEditorController@upload')->name('upload');
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'DashboardController@index')->name('dashboard'); //[MN - Commented out 27.06.2020]
+
+Auth::routes();
+//Route::get('/dashboard', 'DashboardController@index')->name('dashboard'); //[MN - Commented out 27.06.2020]
+Route::get('/dashboard', 'DashboardController@index'); /*[MN - Changed from home to dashboard. 27.06.2020]*/

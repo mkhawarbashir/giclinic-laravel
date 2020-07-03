@@ -26,5 +26,5 @@ class ResetPasswordController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = RouteServiceProvider::DASHBOARD; /*[MN - Changed from HOME to DASHBOARD. 27.06.2020]*/
 }
