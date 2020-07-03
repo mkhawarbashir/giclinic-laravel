@@ -1,4 +1,4 @@
-@extends('layouts.mainlayout')
+@extends('layouts.bloglayout')
 
 <!--Created on . [MN - 07.Jun.2020]-->
 

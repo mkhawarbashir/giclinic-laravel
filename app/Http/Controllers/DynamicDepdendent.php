@@ -58,7 +58,7 @@ class DynamicDepdendent extends Controller
         $address = $request->input('address');
         $gender = $request->input('gender');
         $disease = $request->input('disease');
-         print($disease);
+        // print($disease);
         // print($fname);
         // print($dob);
         

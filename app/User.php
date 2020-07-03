@@ -36,4 +36,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    /*This is the corresponding function to "user()" in Post.php model which creates a hasMany relationship
+        between user and posts. From here we will go to DashboardController.php to add some code there. [MN - 28.06.2020]*/
+        public function posts(){
+            return $this->hasMany('App\Post');
+        }
 }

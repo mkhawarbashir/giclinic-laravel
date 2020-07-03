@@ -1,4 +1,4 @@
-@extends('layouts.mainlayout')
+@extends('layouts.bloglayout')
 
 <!--Commented out below flash-message using @php @endphp tags. [MN - 07.Jun.2020]-->
 
