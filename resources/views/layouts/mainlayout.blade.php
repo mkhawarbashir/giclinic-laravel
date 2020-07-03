@@ -24,7 +24,7 @@
      <link rel="stylesheet" href="css/logincss.css">
 
 </head>
-<body id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
+<body id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="30">
     <div class="header">
         @section("header")
             <!-- PRE LOADER -->
@@ -50,11 +50,11 @@
                <!-- MENU LINKS -->
                <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
-                         <li><a href="/#top" class="smoothScroll">Home</a></li>
-                         <li><a href="/#about" class="smoothScroll">About Us</a></li>
-                         <li><a href="/#team" class="smoothScroll">Our Services</a></li>
-                         <li><a href="/#news" class="smoothScroll">News</a></li>
-                         <li><a href="/#google-map" class="smoothScroll">Contact</a></li>
+                         <li ><a href="/#top">Home</a></li>
+                         <li ><a href="/#about">About Us</a></li>
+                         <li ><a href="/#team">Our Services</a></li>
+                         <li ><a href="/#news">News</a></li>
+                         <li ><a href="/#google-map">Contact</a></li>
                          <li class="appointment-btn"><a href="/#appointment">Make Appointment</a></li>
 						 <li class="appointment-btn"><a href="/clinic_user">Clinic Staff Login</a></li>
                     </ul>

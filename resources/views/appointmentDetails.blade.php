@@ -1,44 +1,51 @@
 @extends('layouts.clinicUser')
 @section('content')
 <br/> <br/> <br/> <br/> <br/>
-   <h3> i am the home page </h3>
-   <h3> i am the home page </h3>
-   <h3> i am the home page </h3>
+<form action="appointmentDetail" method="post" id="dateform">
+@csrf
+  <div class="col-sm-6">
+      <div class="form-group">
+          <label>Select Date</label>
+          <div class="cal-icon">
+          <input type="date" name="datepicker" id="datepicker" class="form-control dynamic" required>
+          <button type="submit" form="dateform" value="Submit">Submit</button>          
+          </div>
+      </div>
 
-   <h3> i am the home page </h3>
-   <h3> i am the home page </h3>
-   <h3> i am the home page </h3>
+  </div>
+</form>
 
-   <h3> i am the home page </h3>
-   <h3> i am the home page </h3>
-   <h3> i am the home page </h3>
+<div class="table-responsive ">
 
-   <h3> i am the home page </h3>
-   <h3> i am the home page </h3>
-   <h3> i am the home page </h3>
+    <table class="table table-striped w-auto" >
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>CNIC</th>
+          <th>Appointment Time</th>
+          <th>City</th>
+          <th>Contact Number</th>
+          
+        </tr>
+    @foreach($patient as $data)
+      
+        <tr>    
+          <td>{{$data->first_name}}</td>
+          <td>{{$data->last_name}}</td>
+          <td class='ptcnic'><a href="patientData/{{$data->cnic}}">{{ $data->cnic }}</a></td>
+          <td>{{$data->time}}</td>
+          <td>{{$data->city}}</td>
+          <td>{{$data->contact_number}}</td>
+          <!-- <td>
+            <button value="Submit" type="submit" form="patientForm" class="editPatient"> Patient Data </button>
+            
+          </td> -->
 
-   <h3> i am the home page </h3>
-   <h3> i am the home page </h3>
-   <h3> i am the home page </h3>
+        </tr>
+        
+    @endforeach
+    </table>
 
-   <h3> i am the home page </h3>
-   <h3> i am the home page </h3>
-   <h3> i am the home page </h3>
-
-   <h3> i am the home page </h3>
-   <h3> i am the home page </h3>
-   <h3> i am the home page </h3>
-
-   <h3> i am the home page </h3>
-   <h3> i am the home page </h3>
-   <h3> i am the home page </h3>
-
-   <h3> i am the home page </h3>
-   <h3> i am the home page </h3>
-   <h3> i am the home page </h3>
-
-   <h3> i am the home page </h3>
-   <h3> i am the home page </h3>
-   <h3> i am the home page </h3>
+</div>
    <br/> <br/> <br/> <br/> <br/>
 @endsection

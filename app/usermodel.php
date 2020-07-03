@@ -40,4 +40,11 @@ class usermodel extends Model
      
     }
 
+    public static function updatePatientPersonal($data, $cnic){
+
+      DB::table('patient_personal')->where('cnic','=', $cnic)->update($data);
+      return 1;
+
+    }
+
 }

@@ -5,7 +5,7 @@
     <section id="appointment" data-stellar-background-ratio="3">
 			<div class="container">
 				<section id="content">
-					<form action="clinicIndex.php">
+					<form action="/appointmentDetails">
 						<h1>Login Form</h1>
 						<div>
 							<input type="text" placeholder="Username" required="" id="username" />
