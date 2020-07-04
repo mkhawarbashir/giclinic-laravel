@@ -19,7 +19,10 @@ Route::get('/', 'PagesController@index');
 Route::get('/clinic_user', 'PagesController@clinicUser');
 Route::get('/appointmentDetails', 'PagesController@appointmentDetails');
 Route::get('/patientDataForm', 'PagesController@patientDataForm');
-
+Route::get('/newPatientDataForm', 'PagesController@newPatientDataForm');
+Route::get('/newDiseaseDataForm', 'PagesController@newDiseaseDataForm');
+Route::get('/newTestDataForm', 'PagesController@newTestDataForm');
+Route::get('/newMedicineDataForm', 'PagesController@newMedicineDataForm');
 
 Route::post('appointmentsubmit','usercontroller@appointmentsubmit');
 Route::post('loaddata','usercontroller@loaddata');
@@ -27,8 +30,10 @@ Route::get('welcome/ajax/{id}','DynamicDepdendent@welcomeAjax');
 Route::post('appointmentDetail','DynamicDepdendent@appointDetail');
 Route::get('patientData/{id}','DynamicDepdendent@getPatientPersonalwithID');
 Route::post('updatePatient','DynamicDepdendent@updatePatientData');
-
-
+Route::post('addNewPatient','DynamicDepdendent@addPatientData');
+Route::post('addNewDisease','DynamicDepdendent@addDiseaseData');
+Route::post('addNewTest','DynamicDepdendent@addTestData');
+Route::post('addNewMedicine','DynamicDepdendent@addMedicineData');
 
 //Function to return data for Home Page
 Route::get('appointmentDetails', function () {
@@ -51,6 +56,10 @@ Route::resource('posts', 'BlogPagesController');
 
 //Define route for file upload. [MN - 11.Jun.2020]
 Route::post('ckeditor/image_upload', 'CKEditorController@upload')->name('upload');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

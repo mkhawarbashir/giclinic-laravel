@@ -29,20 +29,23 @@
 		  		<a href="#" class="img logo rounded-circle mb-5" style="background-image: url(images/about-bg.jpg);"></a>
 	        <ul class="list-unstyled components mb-5">
 	          <li class="active">
-                <a href="#">Home</a>
+                <a href="appointmentDetails">Home</a>
 	          </li>
 	          <li>
-	            <a href="#">Patient Personal</a>
+	            <a href="newPatientDataForm">Add New Patient</a>
 	          </li>
 	          <li>
-                <a href="#">Current Appointment</a>
+                <a href="#">Make New Appointment</a>
 	          </li>
-	          <li>
-                <a href="#">Lab Test</a>
-	          </li>
-	          <li>
-                <a href="#">Medicine</a>
-	          </li>
+	          <li class="nav-item">
+                <a class="nav-link" href="newTestDataForm">Add New Test</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="newDiseaseDataForm">Add New Disease</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="newMedicineDataForm">Add New Medicine</a>
+            </li>
 	        </ul>
 
 	        
@@ -66,13 +69,13 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="nav navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home</a>
+                    <a class="nav-link" href="appointmentDetails">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Patient Personal</a>
+                    <a class="nav-link" href="newPatientDataForm">Add New Patient</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Current Appointment</a>
+                    <a class="nav-link" href="#">Make New Appointment</a>
                 </li>
               </ul>
             </div>

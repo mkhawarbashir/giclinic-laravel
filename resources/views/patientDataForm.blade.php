@@ -8,7 +8,7 @@
     <div class="content">
         <div class="row">
             <div class="col-lg-8 offset-lg-2">
-                <h4 class="page-title">Patient Data Form</h4>
+                <h2 class="page-title">Patient Data Form</h2>
             </div>
         </div>
         <div class="row">

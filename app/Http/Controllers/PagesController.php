@@ -25,5 +25,24 @@ class PagesController extends Controller
 
         return view('patientDataForm');
     }
+
+    public function newPatientDataForm(){
+
+        return view('newPatientDataForm');
+    }
     
+    public function newDiseaseDataForm(){
+
+        return view('newDiseaseDataForm');
+    }
+
+    public function newTestDataForm(){
+
+        return view('newTestDataForm');
+    }
+
+    public function newMedicineDataForm(){
+
+        return view('newMedicineDataForm');
+    }
 }

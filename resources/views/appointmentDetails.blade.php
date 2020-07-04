@@ -16,23 +16,24 @@
 </form>
 
 <div class="table-responsive ">
-
     <table class="table table-striped w-auto" >
         <tr>
           <th>First Name</th>
           <th>Last Name</th>
           <th>CNIC</th>
+          <th>Appointment Date</th>
           <th>Appointment Time</th>
           <th>City</th>
           <th>Contact Number</th>
           
         </tr>
     @foreach($patient as $data)
-      
+        
         <tr>    
           <td>{{$data->first_name}}</td>
           <td>{{$data->last_name}}</td>
           <td class='ptcnic'><a href="patientData/{{$data->cnic}}">{{ $data->cnic }}</a></td>
+          <td>{{$data->date}}</td>
           <td>{{$data->time}}</td>
           <td>{{$data->city}}</td>
           <td>{{$data->contact_number}}</td>

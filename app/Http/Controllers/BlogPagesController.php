@@ -56,7 +56,7 @@ class BlogPagesController extends Controller
         ]);
 
         /*Handle file upload. [MN - 11.06.2020]*/
-        if($request->hasFile('cover-Image')){
+        if($request->hasFile('cover_image')){
             /*Get the file name with extension. [MN - 11.06.2020]*/
             $fileNameWithExt = $request->file('cover_image')->getClientOriginalName();
 
@@ -64,13 +64,13 @@ class BlogPagesController extends Controller
             $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
 
             /*Get just file extension. [MN - 11.06.2020]*/
-            $extension = $request->file('conver_image')->getClientOriginalExtension();
+            $extension = $request->file('cover_image')->getClientOriginalExtension();
             /*File name to store. time() is added here to make file name unique. [MN - 11.06.2020]*/
             $fileNameToStore = $fileName.'_'.time().'.'.$extension;
             /*Upload the image. Default image upload path is storage=>app=>public=>uploads directory in the project.
                 But we need to create new storage link using "php artisan storage:link" command,
                 which creates public==>storage directory where these images will be stored. [MN - 11.06.2020]*/
-            $path = $request->file('cover_image')->storeAs('public/storage/uploads', $fileNameToStore);
+            $path = $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
         }
         else{
             /*If no file is uploaded then save noimage.jpg as file name in posts table. [MN - 11.06.2020]*/
