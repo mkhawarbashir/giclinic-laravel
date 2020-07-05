@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;   //Added User model to DashboardController. [MN - 28.06.2020]
+use App\User;   //Added User model to DashboardController. [MN - 28.06.2020] 
 
 class DashboardController extends Controller
 {
