@@ -24,7 +24,7 @@
     
     <!-- Styles -->
     
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
     <style>
         .row {
             padding-left: 50px; 

@@ -245,14 +245,17 @@
                                    </div>
 
                                    <div class="col-md-6 col-sm-6">
+                                                  <span style="color:red;font-weight:bold">*</span>
                                         <label for="select">Select Time</label>
-                                        <select class="form-control" id="time" name="time">
+                                        <select class="form-control" id="time" name="time" placeholder="Select Available Time">
+                                             <option disabled selected>Select Available Time</option>
                                              
                                         </select>
                                    </div>
                                    {{ csrf_field() }}
 
 								   <div class="col-md-6 col-sm-6">
+                                           <span style="color:red;font-weight:bold">*</span>
                                         <label for="select">Select Your City</label>
                                         <select class="form-control" id="city" name="city">
                                              <option>Lahore</option>
@@ -283,7 +286,7 @@
 									</div>
 
                                    <div class="col-md-12 col-sm-6">
-									    <button type="submit" class="form-control" id="cf-submit" name="submit">Submit Button</button>
+									    <button type="submit" class="form-control" id="cf-submit" name="submit">Submit Appointment</button>
                                    </div>
                               </div>
                         </form>

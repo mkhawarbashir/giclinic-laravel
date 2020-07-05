@@ -24,7 +24,7 @@
      <link rel="stylesheet" href="css/logincss.css">
 
 </head>
-<body id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
+<body id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="30">
     <div class="header">
         @section("header")
             <!-- PRE LOADER -->

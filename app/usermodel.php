@@ -40,4 +40,38 @@ class usermodel extends Model
      
     }
 
+    public static function updatePatientPersonal($data, $cnic){
+
+      DB::table('patient_personal')->where('cnic','=', $cnic)->update($data);
+      return 1;
+
+    }
+
+    public static function addPatientPersonal($data){
+
+      DB::table('patient_personal')->insert($data);
+      return 1;
+
+    }
+    
+    public static function addNewDiseaseData($data){
+
+      DB::table('disease')->insert($data);
+      return 1;
+
+    }
+
+    public static function addNewTestData($data){
+
+      DB::table('test')->insert($data);
+      return 1;
+
+    }
+
+    public static function addNewMedicineData($data){
+
+      DB::table('medicine')->insert($data);
+      return 1;
+
+    }
 }

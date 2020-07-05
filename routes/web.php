@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,21 +15,38 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/clinic_user', function () {
-    return view('clinic_user');
-});
-
-Route::get('/appointmentDetails', function () {
-    return view('appointmentDetails');
-});
+Route::get('/', 'PagesController@index');
+Route::get('/clinic_user', 'PagesController@clinicUser');
+Route::get('/appointmentDetails', 'PagesController@appointmentDetails');
+Route::get('/patientDataForm', 'PagesController@patientDataForm');
+Route::get('/newPatientDataForm', 'PagesController@newPatientDataForm');
+Route::get('/newDiseaseDataForm', 'PagesController@newDiseaseDataForm');
+Route::get('/newTestDataForm', 'PagesController@newTestDataForm');
+Route::get('/newMedicineDataForm', 'PagesController@newMedicineDataForm');
 
 Route::post('appointmentsubmit','usercontroller@appointmentsubmit');
 Route::post('loaddata','usercontroller@loaddata');
 Route::get('welcome/ajax/{id}','DynamicDepdendent@welcomeAjax');
+Route::post('appointmentDetail','DynamicDepdendent@appointDetail');
+Route::get('patientData/{id}','DynamicDepdendent@getPatientPersonalwithID');
+Route::post('updatePatient','DynamicDepdendent@updatePatientData');
+Route::post('addNewPatient','DynamicDepdendent@addPatientData');
+Route::post('addNewDisease','DynamicDepdendent@addDiseaseData');
+Route::post('addNewTest','DynamicDepdendent@addTestData');
+Route::post('addNewMedicine','DynamicDepdendent@addMedicineData');
+
+//Function to return data for Home Page
+Route::get('appointmentDetails', function () {
+
+    //Current date induction missing
+//    $patient = DB::table('patient_personal')->get();
+//    $appoint = DB::table('appointment')->get();
+
+    $patient = DB::table('patient_personal')->join('appointment', 'patient_personal.patient_id','=','appointment.patient_id')->where('date',date('Y-m-d'))->select('patient_personal.*','appointment.*')->get();
+
+    return view('appointmentDetails', ['patient' => $patient]);
+});
+
 
 //Route::get('blog', 'BlogPagesController@blog_index');
 
