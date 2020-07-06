@@ -20,7 +20,15 @@
     <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    
+    {{-- <div id="app">
+        @include ('inc.navbar')
+        <div class="container">
+            @include('inc.messages')
+            <main class="py-4">
+                @yield('content')
+            </main>
+        </div>
+    </div> [MN - Commented on 28.06.2020]--}}
     <div id="app">
         <main class="py-4">
             @include('inc.navbar')
