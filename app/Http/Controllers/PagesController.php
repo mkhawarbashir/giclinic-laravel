@@ -45,4 +45,14 @@ class PagesController extends Controller
 
         return view('newMedicineDataForm');
     }
+
+    public function newAppointmentDataForm(){
+
+        return view('newAppointmentDataForm');
+    }
+
+    public function viewAllPatientsForm(){
+
+        return view('viewAllPatientsForm');
+    }
 }

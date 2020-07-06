@@ -23,8 +23,11 @@ Route::get('/newPatientDataForm', 'PagesController@newPatientDataForm');
 Route::get('/newDiseaseDataForm', 'PagesController@newDiseaseDataForm');
 Route::get('/newTestDataForm', 'PagesController@newTestDataForm');
 Route::get('/newMedicineDataForm', 'PagesController@newMedicineDataForm');
+Route::get('/newAppointmentDataForm', 'PagesController@newAppointmentDataForm');
+Route::get('/viewAllPatientsForm', 'PagesController@viewAllPatientsForm');
 
 Route::post('appointmentsubmit','usercontroller@appointmentsubmit');
+Route::post('newappointmentsubmit','usercontroller@newappointmentsubmit');
 Route::post('loaddata','usercontroller@loaddata');
 Route::get('welcome/ajax/{id}','DynamicDepdendent@welcomeAjax');
 Route::post('appointmentDetail','DynamicDepdendent@appointDetail');
@@ -34,6 +37,7 @@ Route::post('addNewPatient','DynamicDepdendent@addPatientData');
 Route::post('addNewDisease','DynamicDepdendent@addDiseaseData');
 Route::post('addNewTest','DynamicDepdendent@addTestData');
 Route::post('addNewMedicine','DynamicDepdendent@addMedicineData');
+Route::post('viewAPatient','DynamicDepdendent@aPatient');
 
 //Function to return data for Home Page
 Route::get('appointmentDetails', function () {
@@ -45,6 +49,17 @@ Route::get('appointmentDetails', function () {
     $patient = DB::table('patient_personal')->join('appointment', 'patient_personal.patient_id','=','appointment.patient_id')->where('date',date('Y-m-d'))->select('patient_personal.*','appointment.*')->get();
 
     return view('appointmentDetails', ['patient' => $patient]);
+});
+
+Route::get('viewAllPatientsForm', function () {
+
+    //Current date induction missing
+//    $patient = DB::table('patient_personal')->get();
+//    $appoint = DB::table('appointment')->get();
+
+    $patient = DB::table('patient_personal')->get();
+
+    return view('viewAllPatientsForm', ['patient' => $patient]);
 });
 
 

@@ -144,4 +144,14 @@ class DynamicDepdendent extends Controller
 
         return view('appointmentDetails', ['patient' => $patient]);
     }
+
+    public function aPatient(Request $request)
+    {
+
+        $cnic = $request->input('cnic');
+
+        $patient = DB::table('patient_personal')->select('patient_personal.*')->where('cnic','=',$cnic)->get();
+
+        return view('viewAllPatientsForm', ['patient' => $patient]);
+    }
 }

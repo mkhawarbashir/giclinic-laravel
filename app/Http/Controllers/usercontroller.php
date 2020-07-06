@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\usermodel;
 use Session;
+use DB;
 
 class usercontroller extends Controller
 {
@@ -52,6 +53,37 @@ class usercontroller extends Controller
              else{
                  
                  return redirect('/')->with('info', 'Fill in the required information');
+             }
+
+      }
+
+      public function newappointmentsubmit(Request $request){
+ 
+        // Insert record
+             $fname = $request->input('fname');
+             $lname = $request->input('lname');
+             $cnic = $request->input('cnic');
+             $phone = $request->input('phone');
+             $city = $request->input('city');
+             $date = $request->input('datepicker');
+             $time = $request->input('time');
+             $forid = array('cnic'=>$cnic);
+    
+             if($fname !='' && $lname !='' && $cnic != '' && $phone != '' && $city != '' && $date !='' && $time != ''){
+                $data = array('first_name'=>$fname,"last_name"=>$lname,"cnic"=>$cnic,"contact_number"=>$phone,"city"=>$city);
+                $data1 = array('date'=>date('Y-m-d', strtotime($date)), 'time'=>$time,'type'=>'Online');
+                // Insert
+                $value = usermodel::insert_patient_personal($data);
+              
+                $value = usermodel::insert_appointment($data1, $forid);
+                
+                $patient = DB::table('patient_personal')->join('appointment', 'patient_personal.patient_id','=','appointment.patient_id')->where('date',date('Y-m-d'))->select('patient_personal.*','appointment.*')->get();
+
+                return view('appointmentDetails', ['patient' => $patient]);
+             }
+             else{
+                 
+                 return redirect('/newAppointmentDataForm')->with('info', 'Fill in the required information');
              }
 
       }

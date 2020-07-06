@@ -35,7 +35,7 @@
 	            <a href="newPatientDataForm">Add New Patient</a>
 	          </li>
 	          <li>
-                <a href="#">Make New Appointment</a>
+                <a href="newAppointmentDataForm">Make New Appointment</a>
 	          </li>
 	          <li class="nav-item">
                 <a class="nav-link" href="newTestDataForm">Add New Test</a>
@@ -72,10 +72,10 @@
                     <a class="nav-link" href="appointmentDetails">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="newPatientDataForm">Add New Patient</a>
+                    <a class="nav-link" href="viewAllPatientsForm">View All Patients</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Make New Appointment</a>
+                    <a class="nav-link" href="newAppointmentDataForm">Make New Appointment</a>
                 </li>
               </ul>
             </div>
@@ -102,6 +102,51 @@
             <script src="js/main.js"></script>
             <script src="js/popper.js"></script>
 
+            <script type="text/javascript">
+                        $('#datepicker').datepicker({
+                            daysOfWeekDisabled: [0,6],
+                            startDate: '+0d',
+                            endDate: '+13d',
+                            format: 'dd-mm-yyyy'
+                            }).on('changeDate', function(e) {
+                                var mydate = $(this).val();
+                                console.log(mydate);
+                            if(mydate) {
+                                $.ajax({
+                                    url: '/welcome/ajax/'+mydate,
+                                    type: "GET",
+                                    dataType: "json",
+                                    success:function(data) {
+                                        var booked = [];
+                                        var all = ['06:00 pm', '06:15 pm', '06:30 pm', '06:45 pm', '07:00 pm', '07:15 pm', '07:30 pm', '07:45 pm', '08:00 pm', '08:15 pm', '08:30 pm', '08:45 pm', '09:00 pm', '09:15 pm', '09:30 pm', '09:45 pm'];
+                                        
+                                        var len = data.length;
+                                            
+                                            $("#time").empty();
+                                            for( var i = 0; i<len; i++){
+                                                var id = data[i]['value'];
+                                                var name = data[i]['time'];
+                                                booked.push(data[i]['time']);        
+                                            }
+
+                                        var available = $(all).not(booked).get();
+                                        
+                                        for(var j=0; j<available.length; j++){
+
+                                            $("#time").append("<option>"+available[j]+"</option>");
+
+                                        }
+
+                                    }
+                                });
+                            }else{
+                                $('select[name="time"]').empty();
+                            }
+                        });
+                       // $("#datepicker").datepicker("setDate", '-- Select Date --');//new Date());
+                        
+                        
+                </script>
         
     </div>
 
