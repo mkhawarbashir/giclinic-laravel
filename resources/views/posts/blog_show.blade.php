@@ -12,8 +12,6 @@
         <hr>
         <small>Written on: { {$post->created_at}}</small>
     -->
-
-
     <h1>{{$post->title}}</h1>
         <div>
             {!!$post->body!!}   <!--Surrounding !! (double exclamation marks) will parse in browser 
