@@ -42,9 +42,9 @@
             <div class="container">
 
                <div class="navbar-header">
-
+                <img src="/images/logo.png" alt="" height=50 width=60>
                     <!-- lOGO TEXT HERE -->
-                    <a href="/" class="navbar-brand"><i class="fa fa-h-square"></i>ealth Center</a>
+                    <!-- <a href="/" class="navbar-brand"><i class="fa fa-h-square"></i>ealth Center</a> -->
                </div>
 
                <!-- MENU LINKS -->
