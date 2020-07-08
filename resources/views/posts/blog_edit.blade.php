@@ -30,6 +30,12 @@
                 });
             </script>
          </div>
+         <!--File upload code using Laravel. This will provide a "Choose File" button in create post page.
+                To make it functional, we will need to add a new column "cover_image" in posts table using 
+                Laravel migration. 28-06-2020-->
+        <div class = "form-group">
+            {{Form::file('cover_image')}}
+        </div>
         <a href="/posts" class="btn btn-secondary">Back</a>
         <!--Below line converts POST into PUT as required by this route. [MN - 11.Jun.2020]-->
         {{Form::hidden('_method', 'PUT')}}

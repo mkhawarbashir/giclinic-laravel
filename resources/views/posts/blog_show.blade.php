@@ -12,8 +12,6 @@
         <hr>
         <small>Written on: { {$post->created_at}}</small>
     -->
-
-
     <h1>{{$post->title}}</h1>
         <div>
             {!!$post->body!!}   <!--Surrounding !! (double exclamation marks) will parse in browser 
@@ -23,7 +21,7 @@
             <!--Compare created and updated dates and show only created_at if both 
                 are same and both if both are different. [MN - 11.06.2020]-->    
         @if($post->created_at->eq($post->updated_at))
-            <small>Written on: { {$post->created_at}} by { {$post->user->name}}</small>
+            <small>Written on: {{$post->created_at}} by {{$post->user->name}}</small>
         @else
             <small>Written on: {{$post->created_at}} by {{$post->user->name}}</small><br>
             <small>Updated on: {{$post->updated_at}} by {{$post->user->name}}</small>    
