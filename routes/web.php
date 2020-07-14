@@ -24,7 +24,7 @@ Route::get('/newDiseaseDataForm', 'PagesController@newDiseaseDataForm');
 Route::get('/newTestDataForm', 'PagesController@newTestDataForm');
 Route::get('/newMedicineDataForm', 'PagesController@newMedicineDataForm');
 Route::get('/newAppointmentDataForm', 'PagesController@newAppointmentDataForm');
-Route::get('/viewAllPatientsForm', 'PagesController@viewAllPatientsForm');
+//Route::get('/viewAllPatientsForm', 'PagesController@viewAllPatientsForm');
 
 Route::post('appointmentsubmit','usercontroller@appointmentsubmit');
 Route::post('newappointmentsubmit','usercontroller@newappointmentsubmit');
@@ -37,7 +37,7 @@ Route::post('addNewPatient','DynamicDepdendent@addPatientData');
 Route::post('addNewDisease','DynamicDepdendent@addDiseaseData');
 Route::post('addNewTest','DynamicDepdendent@addTestData');
 Route::post('addNewMedicine','DynamicDepdendent@addMedicineData');
-Route::post('viewAPatient','DynamicDepdendent@aPatient');
+//Route::post('viewAPatient','DynamicDepdendent@aPatient');
 
 //Function to return data for Home Page
 Route::get('appointmentDetails', function () {

@@ -43,6 +43,8 @@
 
                <div class="navbar-header">
                 <img src="/images/logo.png" alt="" height=50 width=60>
+                <h6 class="font-weight-bolder"><small>Liver and <br/> Stomach Clinic </small></h6>
+                
                     <!-- lOGO TEXT HERE -->
                     <!-- <a href="/" class="navbar-brand"><i class="fa fa-h-square"></i>ealth Center</a> -->
                </div>

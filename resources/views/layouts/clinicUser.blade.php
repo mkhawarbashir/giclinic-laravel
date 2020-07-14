@@ -103,7 +103,7 @@
             <script src="js/popper.js"></script>
 
             <script type="text/javascript">
-                        $('#datepicker').datepicker({
+                        $('#doapicker').datepicker({
                             daysOfWeekDisabled: [0,6],
                             startDate: '+0d',
                             endDate: '+13d',
