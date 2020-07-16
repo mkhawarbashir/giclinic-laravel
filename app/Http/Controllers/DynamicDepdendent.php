@@ -32,14 +32,16 @@ class DynamicDepdendent extends Controller
         $date = $request->input('datepicker');
         $dt = date('Y-m-d', strtotime($date));
         //print($dt);
-        $patient = DB::table('patient_personal')->join('appointment', 'patient_personal.patient_id','=','appointment.patient_id')->where('date',$dt)->select('patient_personal.*','appointment.*')->get();
+        $patient = DB::table('patient_personal')->join('appointment', 'patient_personal.patient_id','=','appointment.patient_id')->where('date','=',$dt)->select('patient_personal.*','appointment.*')->get();
         
-        return view('appointmentDetails', ['patient' => $patient]);
+        return view('appointmentDetails', ['patient' => $patient,'date' => date('d-m-Y', strtotime($date))]);
     }
 
-    public function getPatientPersonalwithID($cnic)
+    public function getPatientPersonalwithID(Request $request)
     {
-        $rec = DB::table("patient_personal")->where("cnic", $cnic)->get();
+        $id = $request->input('id');
+
+        $rec = DB::table("patient_personal")->where("patient_id", '=' ,$id)->get();
      
         return View('patientDataForm', ['rec' => $rec]);//->with('rec',$rec);
      
@@ -69,7 +71,7 @@ class DynamicDepdendent extends Controller
 
         $patient = DB::table('patient_personal')->join('appointment', 'patient_personal.patient_id','=','appointment.patient_id')->where('date',date('Y-m-d'))->select('patient_personal.*','appointment.*')->get();
 
-        return view('appointmentDetails', ['patient' => $patient]);
+        return view('appointmentDetails', ['patient' => $patient, 'date' => date('d-m-Y')]);
     }
 
     public function addPatientData(Request $request)
@@ -96,7 +98,7 @@ class DynamicDepdendent extends Controller
 
         $patient = DB::table('patient_personal')->join('appointment', 'patient_personal.patient_id','=','appointment.patient_id')->where('date',date('Y-m-d'))->select('patient_personal.*','appointment.*')->get();
 
-        return view('appointmentDetails', ['patient' => $patient]);
+        return view('appointmentDetails', ['patient' => $patient, 'date' => date('d-m-Y')]);
     }
 
     public function addDiseaseData(Request $request)
@@ -110,7 +112,7 @@ class DynamicDepdendent extends Controller
 
         $patient = DB::table('patient_personal')->join('appointment', 'patient_personal.patient_id','=','appointment.patient_id')->where('date',date('Y-m-d'))->select('patient_personal.*','appointment.*')->get();
 
-        return view('appointmentDetails', ['patient' => $patient]);
+        return view('appointmentDetails', ['patient' => $patient, 'date' => date('d-m-Y')]);
     }
 
     public function addTestData(Request $request)
@@ -125,7 +127,7 @@ class DynamicDepdendent extends Controller
 
         $patient = DB::table('patient_personal')->join('appointment', 'patient_personal.patient_id','=','appointment.patient_id')->where('date',date('Y-m-d'))->select('patient_personal.*','appointment.*')->get();
 
-        return view('appointmentDetails', ['patient' => $patient]);
+        return view('appointmentDetails', ['patient' => $patient, 'date' => date('d-m-Y')]);
     }
 
     public function addMedicineData(Request $request)
@@ -142,7 +144,7 @@ class DynamicDepdendent extends Controller
 
         $patient = DB::table('patient_personal')->join('appointment', 'patient_personal.patient_id','=','appointment.patient_id')->where('date',date('Y-m-d'))->select('patient_personal.*','appointment.*')->get();
 
-        return view('appointmentDetails', ['patient' => $patient]);
+        return view('appointmentDetails', ['patient' => $patient, 'date' => date('d-m-Y')]);
     }
 
     public function aPatient(Request $request)
@@ -153,5 +155,45 @@ class DynamicDepdendent extends Controller
         $patient = DB::table('patient_personal')->select('patient_personal.*')->where('cnic','=',$cnic)->get();
 
         return view('viewAllPatientsForm', ['patient' => $patient]);
+    }
+    
+    public function appointments(Request $request)
+    {
+        $id = $request->input('id');
+        //$id = DB::table("patient_personal")->select('patient_id')->where("cnic",'=', $cnic)->get();
+        $name = DB::table("patient_personal")->select('first_name')->where("patient_id",'=', $id)->get();
+        $appointment = DB::table('appointment')->select('appointment.*')->where('patient_id','=',$id)->get();
+        
+        return view('viewPatientAppointmentsForm', ['appointment' => $appointment, 'name' => $name[0]->first_name]);
+    }
+    
+    public function updateAppointment(Request $request)
+    {
+        $patID = $request->input('patient_id');
+        $apptID = $request->input('appointment_id');
+        $date = date('Y-m-d', strtotime($request->input('appointDate')));
+        $time = $request->input('time');
+        $status = $request->input('status');
+        print($patID);
+        $data = array('Status'=>$status);
+        
+        usermodel::updateAppointment($data,$patID,$apptID);
+        
+        $patient = DB::table('patient_personal')->join('appointment', 'patient_personal.patient_id','=','appointment.patient_id')->where('date',date('Y-m-d'))->select('patient_personal.*','appointment.*')->get();
+        
+        return view('appointmentDetails', ['patient' => $patient, 'date' => date('d-m-Y')]);
+        
+    }
+
+    public function updateAppt(Request $request)
+    {
+        $patID = $request->input('patID');
+        print($patID);
+        $apptID = $request->input('apptID');
+        print($apptID);
+       // $data = array('appointment_id'=>$request->input('apptID'),'patient_id'=>$request->input('patID'),'first_name'=>$request->input('first_name'),'last_name'=>$request->input('last_name'),"date"=>$request->input('date'),"time"=>$request->input('time'));
+        $adata = DB::table('appointment')->where('appointment_id','=',$apptID)->where('patient_id','=',$patID)->select('appointment.*')->get();
+        $pdata = DB::table('patient_personal')->where('patient_id','=',$patID)->select('patient_personal.*')->get();
+        return view('updateAppointmentForm', ['arec' => $adata, 'prec'=>$pdata]);
     }
 }

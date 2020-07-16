@@ -30,27 +30,33 @@
           <th>City</th>
           <th>Contact Number</th>
           <th>Disease</th>
-          
+          <th>View All Appointments</th>
         </tr>
     @foreach($patient as $data)
-        
+    {!! Form::open(['url' => '/viewPatientAppointments', 'method' => 'POST']) !!}
+     @csrf    
         <tr>    
           <td>{{$data->first_name}}</td>
           <td>{{$data->last_name}}</td>
-          <td>{{ $data->cnic }}</td>
+          <td>{{$data->cnic }}</td>
           <td>{{$data->dob}}</td>
           <td>{{$data->gender}}</td>
           <td>{{$data->city}}</td>
           <td>{{$data->contact_number}}</td>
           <td>{{$data->disease}}</td>
+          <td>
+          {{ Form::hidden('id', $data->patient_id) }}
+          {!! Form::submit('View', ['class' => 'btn btn-sl btn-info'] ) !!} </td>
+          
           <!-- <td>
             <button value="Submit" type="submit" form="patientForm" class="editPatient"> Patient Data </button>
             
           </td> -->
 
         </tr>
-        
+        {!! Form::close()  !!}       
     @endforeach
+    
     </table>
 
 </div>

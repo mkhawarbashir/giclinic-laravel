@@ -55,4 +55,14 @@ class PagesController extends Controller
 
         return view('viewAllPatientsForm');
     }
+    
+    public function viewPatientAppointmentsForm(){
+
+        return view('viewPatientAppointmentsForm');
+    }
+    
+    public function updateAppointmentForm(){
+
+        return view('updateAppointmentForm');
+    }
 }

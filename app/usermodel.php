@@ -40,6 +40,14 @@ class usermodel extends Model
      
     }
 
+    public static function updateAppointment($data, $patID, $apptID){
+      
+     $ab =  DB::table('appointment')->where('appointment_id','=', $apptID)->where('patient_id','=',$patID)->update($data);
+     
+      return $ab;
+
+    }
+
     public static function updatePatientPersonal($data, $cnic){
 
       DB::table('patient_personal')->where('cnic','=', $cnic)->update($data);

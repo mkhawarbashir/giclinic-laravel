@@ -65,11 +65,12 @@ class usercontroller extends Controller
              $cnic = $request->input('cnic');
              $phone = $request->input('phone');
              $city = $request->input('city');
-             $date = $request->input('datepicker');
+             $date = $request->input('doapicker');
              $time = $request->input('time');
              $forid = array('cnic'=>$cnic);
     
              if($fname !='' && $lname !='' && $cnic != '' && $phone != '' && $city != '' && $date !='' && $time != ''){
+
                 $data = array('first_name'=>$fname,"last_name"=>$lname,"cnic"=>$cnic,"contact_number"=>$phone,"city"=>$city);
                 $data1 = array('date'=>date('Y-m-d', strtotime($date)), 'time'=>$time,'type'=>'Online');
                 // Insert
