@@ -77,6 +77,13 @@
                 <li class="nav-item">
                     <a class="nav-link" href="newAppointmentDataForm">Make New Appointment</a>
                 </li>
+                <li class="nav-item">
+                    {!! Form::open(['url' => '/docDashboardData', 'method' => 'POST']) !!}
+                    @csrf
+                    {!! Form::submit('Doctor Dashboard', ['class' => 'btn btn-sl btn-info'] ) !!}
+                    
+                    {!! Form::close()  !!}
+                </li>
               </ul>
             </div>
           </div>

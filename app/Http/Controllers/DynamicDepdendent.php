@@ -188,12 +188,18 @@ class DynamicDepdendent extends Controller
     public function updateAppt(Request $request)
     {
         $patID = $request->input('patID');
-        print($patID);
         $apptID = $request->input('apptID');
-        print($apptID);
-       // $data = array('appointment_id'=>$request->input('apptID'),'patient_id'=>$request->input('patID'),'first_name'=>$request->input('first_name'),'last_name'=>$request->input('last_name'),"date"=>$request->input('date'),"time"=>$request->input('time'));
+        
         $adata = DB::table('appointment')->where('appointment_id','=',$apptID)->where('patient_id','=',$patID)->select('appointment.*')->get();
         $pdata = DB::table('patient_personal')->where('patient_id','=',$patID)->select('patient_personal.*')->get();
         return view('updateAppointmentForm', ['arec' => $adata, 'prec'=>$pdata]);
+    }
+
+    
+    public function docDashboardData()
+    {
+        $patient = DB::table('patient_personal')->join('appointment', 'patient_personal.patient_id','=','appointment.patient_id')->where('date',date('Y-m-d'))->select('patient_personal.*','appointment.*')->get();
+       // $data = array('appointment_id'=>$request->input('apptID'),'patient_id'=>$request->input('patID'),'first_name'=>$request->input('first_name'),'last_name'=>$request->input('last_name'),"date"=>$request->input('date'),"time"=>$request->input('time'));
+        return view('docDashboard', ['patient' => $patient]);
     }
 }

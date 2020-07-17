@@ -65,4 +65,10 @@ class PagesController extends Controller
 
         return view('updateAppointmentForm');
     }
+    
+    public function docDashboard(){
+
+        return view('docDashboard');
+    }
 }
+
