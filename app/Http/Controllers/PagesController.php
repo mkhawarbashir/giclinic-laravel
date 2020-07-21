@@ -70,5 +70,10 @@ class PagesController extends Controller
 
         return view('docDashboard');
     }
+    
+    public function newPrescriptionForm(){
+
+        return view('newPrescriptionForm');
+    }
 }
 

@@ -50,8 +50,8 @@
                     </div>
                     <div class="m-t-20 text-center">
                         <!-- {!!Form::hidden('_method', 'PUT')!!} -->
-                        {!! Form::submit('Submit Medicine Data', ['class' => 'btn btn-sl btn-info'] ) !!}
-                        
+                        {!! Form::submit('Save', ['class' => 'btn btn-sl btn-info'] ) !!}
+                        {!! Form::submit('Cancel', ['class' => 'btn btn-sl btn-info', 'route'=>'appointmentDetails'] ) !!}
                     </div>
                 {!! Form::close()  !!}
             </div>

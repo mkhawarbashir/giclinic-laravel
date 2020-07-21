@@ -46,7 +46,7 @@
                             <div class="form-group">
                             <strong>{{Form::label('title', 'Patient Status')}}<span class="text-danger">*</span></strong>
                                         
-                            {!!Form::select('status', ['Active'=>'Active', 'Not Active'=>'Not Active'], 'Not Active',['class'=>'form-control'])!!}
+                            {!!Form::select('status', ['Arrived'=>'Arrived', 'Not Arrived'=>'Not Arrived'], 'Not Arrived',['class'=>'form-control'])!!}
                             </div>
                         </div>
                         {{ Form::hidden('patient_id', $pdata->patient_id) }}
@@ -56,8 +56,8 @@
                     </div>
                     <div class="m-t-20 text-center">
                         <!-- {!!Form::hidden('_method', 'PUT')!!} -->
-                        {!! Form::submit('Update Appointment Data', ['class' => 'btn btn-sl btn-info'] ) !!}
-                        
+                        {!! Form::submit('Update', ['class' => 'btn btn-sl btn-info'] ) !!}
+                        {!! Form::submit('Cancel', ['class' => 'btn btn-sl btn-info', 'route'=>'appointmentDetails'] ) !!}
                     </div>
                 {!! Form::close()  !!}
             </div>

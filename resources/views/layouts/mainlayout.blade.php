@@ -22,7 +22,10 @@
      <!-- MAIN CSS -->
      <link rel="stylesheet" href="css/tooplate-style.css">
      <link rel="stylesheet" href="css/logincss.css">
+    <style>
+        
 
+    </style>
 </head>
 <body id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="30">
     <div class="header">
@@ -38,7 +41,12 @@
 
 
         <!-- MENU -->
-        <section class="navbar navbar-default navbar-static-top" role="navigation">
+        <section class="navbar-default navbar-static-top" role="navigation">
+            
+        
+
+        
+        
             <div class="container">
 
                <div class="navbar-header">
@@ -50,18 +58,19 @@
                </div>
 
                <!-- MENU LINKS -->
-               <div class="collapse navbar-collapse">
+               <!-- <div class="collapse navbar-collapse"> -->
+                
                     <ul class="nav navbar-nav navbar-right">
-                         <li><a href="/#top" class="smoothScroll">Home</a></li>
-                         <li><a href="/#team" class="smoothScroll">Our Services</a></li>
-                         <li><a href="/posts/#blog_index" class="smoothScroll">Blogs</a></li>
-                         <li><a href="/#news" class="smoothScroll">News</a></li>
-                         <li><a href="/#about" class="smoothScroll">About Us</a></li>
-                         <li><a href="/#google-map" class="smoothScroll">Contact</a></li>
+                         <li><a href="/#top" >Home</a></li>
+                         <li><a href="/#team">Our Services</a></li>
+                         <li><a href="/posts/#blog_index">Blogs</a></li>
+                         <li><a href="/#news">News</a></li>
+                         <li><a href="/#about">About Us</a></li>
+                         <li><a href="/#google-map" >Contact</a></li>
                          <li class="appointment-btn"><a href="/#appointment">Make Appointment</a></li>
 						 <li class="appointment-btn"><a href="/clinic_user">Clinic Staff Login</a></li>
                     </ul>
-               </div>
+               <!-- </div> -->
 
             </div>
          </section>
@@ -85,7 +94,7 @@
 
                                         <div class="contact-info">
                                             <p><i class="fa fa-phone"></i> 010-070-0170</p>
-                                            <p><i class="fa fa-envelope-o"></i> <a href="#">info@company.com</a></p>
+                                            <p><i class="fa fa-envelope-o"></i> <a href="#">giclinic@hotmail.com</a></p>
                                         </div>
                                     </div>
                                 </div>

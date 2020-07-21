@@ -28,6 +28,7 @@ Route::get('/viewAllPatientsForm', 'PagesController@viewAllPatientsForm');
 Route::get('/viewPatientAppointmentsForm', 'PagesController@viewPatientAppointmentsForm');
 Route::get('/updateAppointmentForm', 'PagesController@updateAppointmentForm');
 Route::get('/docDashboard', 'PagesController@docDashboard');
+Route::get('/newPrescriptionForm', 'PagesController@newPrescriptionForm');
 
 Route::post('appointmentsubmit','usercontroller@appointmentsubmit');
 Route::post('newappointmentsubmit','usercontroller@newappointmentsubmit');
@@ -45,6 +46,7 @@ Route::post('viewPatientAppointments','DynamicDepdendent@appointments');
 Route::post('updateAppointment','DynamicDepdendent@updateAppointment');
 Route::post('updateAppt','DynamicDepdendent@updateAppt');
 Route::post('docDashboardData','DynamicDepdendent@docDashboardData');
+Route::post('addNewPrescription','DynamicDepdendent@addNewPrescription');
 
 //Function to return data for Home Page
 Route::get('appointmentDetails', function () {

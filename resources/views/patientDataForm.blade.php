@@ -8,7 +8,7 @@
     <div class="content">
         <div class="row">
             <div class="col-lg-8 offset-lg-2">
-                <h2 class="page-title">Patient Data Form</h2>
+                <h2 class="page-title">Patient Detail</h2>
             </div>
         </div>
         <div class="row">
@@ -110,7 +110,8 @@
                     </div>
                     <div class="m-t-20 text-center">
                         <!-- {!!Form::hidden('_method', 'PUT')!!} -->
-                        {!! Form::submit('Submit Patient Data', ['class' => 'btn btn-sl btn-info'] ) !!}
+                        {!! Form::submit('Save', ['class' => 'btn btn-sl btn-info'] ) !!}
+                        {!! Form::submit('Cancel', ['class' => 'btn btn-sl btn-info', 'route'=>'appointmentDetails'] ) !!}
                         
                     </div>
                 {!! Form::close()  !!}

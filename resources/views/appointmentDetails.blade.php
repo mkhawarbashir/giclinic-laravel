@@ -27,8 +27,8 @@
           <th>Appointment Time</th>
           <th>City</th>
           <th>Contact Number</th>
-          <th>Personal Data</th>
-          <th>Appointment Data</th>
+          <th>Personal Detail</th>
+          <th>Appointment Status</th>
         </tr>
   
     @foreach($patient as $data)
@@ -43,14 +43,14 @@
           <td>{{$data->city}}</td>
           <td>{{$data->contact_number}}</td>
           <td>{{ Form::hidden('id', $data->patient_id) }}
-          {!! Form::submit('View', ['class' => 'btn btn-sl btn-info'] ) !!} </td>
+          {!! Form::submit('Edit', ['class' => 'btn btn-sl btn-info'] ) !!} </td>
           <td>{{ Form::hidden('patID', $data->patient_id) }}
           {{ Form::hidden('apptID', $data->appointment_id) }}
           {{ Form::hidden('first_name', $data->first_name) }}
           {{ Form::hidden('last_name', $data->last_name) }}
           {{ Form::hidden('date', $data->date) }}
           {{ Form::hidden('time', $data->time) }}
-          {!! Form::submit('View', ['class' => 'btn btn-sl btn-info', 'formaction'=> '/updateAppt'] ) !!} </td>
+          {!! Form::submit('Update', ['class' => 'btn btn-sl btn-info', 'formaction'=> '/updateAppt'] ) !!} </td>
         
           <!-- <td>
             <button value="Submit" type="submit" form="patientForm" class="editPatient"> Patient Data </button>

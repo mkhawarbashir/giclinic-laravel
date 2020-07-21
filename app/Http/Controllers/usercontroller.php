@@ -42,12 +42,24 @@ class usercontroller extends Controller
                 // Insert
                 $value = usermodel::insert_patient_personal($data);
               
-                $value = usermodel::insert_appointment($data1, $forid);
-                if($value){ 
-                return redirect('/')->with('success','Dear '. $fname . ' '. $lname . '. Your appointment for '. $date . ' at '. $time . ' has been made successfully');
+                $patID = DB::table('patient_personal')->where('cnic','=',$cnic)->value('patient_id');
+
+                $res='';
+                $res = DB::table('appointment')->where('date','=',strtotime($date))->where('patient_id','=',$patID)->get();
+
+                if($res==''){
+                    $value = usermodel::insert_appointment($data1, $forid);
+                    if($value){ 
+                    return redirect('/')->with('success','Dear '. $fname . ' '. $lname . '. Your appointment for '. $date . ' at '. $time . ' has been made successfully');
+                    }
+                    else{
+                        return redirect('/')->with('info', 'Selected date or time has already been booked. Select any other.');   
+                    }
                 }
                 else{
-                    return redirect('/')->with('info', 'Selected date or time has already been booked. Select any other.');   
+
+                    return redirect('/')->with('info', 'Appointment for this ID has already been made for this date.');
+
                 }
              }
              else{
@@ -76,11 +88,23 @@ class usercontroller extends Controller
                 // Insert
                 $value = usermodel::insert_patient_personal($data);
               
+                $patID = DB::table('patient_personal')->where('cnic','=',$cnic)->value('patient_id');
+
+                $res='';
+                $res = DB::table('appointment')->where('date','=',strtotime($date))->where('patient_id','=',$patID)->get();
+
+                if($res==''){
                 $value = usermodel::insert_appointment($data1, $forid);
                 
                 $patient = DB::table('patient_personal')->join('appointment', 'patient_personal.patient_id','=','appointment.patient_id')->where('date',date('Y-m-d'))->select('patient_personal.*','appointment.*')->get();
 
-                return view('appointmentDetails', ['patient' => $patient]);
+                return view('appointmentDetails', ['patient' => $patient, 'date'=>date('d-m-Y')]);
+                }
+                else{
+
+                    return redirect('/newAppointmentDataForm')->with('info', 'Appointment for this ID has already been made for this date.');
+
+                }   
              }
              else{
                  

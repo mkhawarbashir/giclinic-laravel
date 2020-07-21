@@ -202,4 +202,14 @@ class DynamicDepdendent extends Controller
        // $data = array('appointment_id'=>$request->input('apptID'),'patient_id'=>$request->input('patID'),'first_name'=>$request->input('first_name'),'last_name'=>$request->input('last_name'),"date"=>$request->input('date'),"time"=>$request->input('time'));
         return view('docDashboard', ['patient' => $patient]);
     }
+
+    public function addNewPrescription(Request $request)
+    {
+
+        $patID = $request->input('patient_id');
+        $patName = DB::table('patient_personal')->where('patient_id','=',$patID)->select('first_name')->get();
+        print($patID);
+        return view('newPrescriptionForm', ['patient_id' => $patID, 'patient_name'=>$patName[0]->first_name]);
+
+    }
 }

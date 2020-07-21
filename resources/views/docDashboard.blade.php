@@ -8,7 +8,7 @@
     <div class="content">
         <div class="row">
             <div class="col-lg-8 offset-lg-2">
-                <h2 class="page-title">Welcome to Clinic</h2>
+                <h2 class="page-title">Welcome to Liver & Stomach Clinic</h2>
             </div>
         </div>
         <div class="row">
@@ -32,7 +32,7 @@
                                     </tr>
                                
                                 @foreach($patient as $data)
-                                {!! Form::open(['url' => '/viewNewPrescription', 'method' => 'POST']) !!}
+                                {!! Form::open(['url' => '/addNewPrescription', 'method' => 'POST']) !!}
                                 @csrf    
                                     <tr>    
                                     <td>{{$data->first_name}}</td>
@@ -42,8 +42,9 @@
                                     <td>{{$data->disease}}</td>
                                     <td>{{$data->time}}</td>
                                     <td>{{$data->Status}}</td>
+                                    
                                     <td>
-                                    {{ Form::hidden('id', $data->patient_id) }}
+                                    {{ Form::hidden('patient_id', $data->patient_id) }}
                                     {!! Form::submit('View', ['class' => 'btn btn-sl btn-info'] ) !!} </td>
                                     
                                     <!-- <td>

@@ -18,14 +18,23 @@
      
      <script src="js/bootstrap-multiselect.js"></script>
      
+    <style>
+    .sidenav {
+        position: fixed;
+        width: 300px;
+        }
+    .topnav-right{
 
+        float:right;
+    }
+    </style>
 
 </head>
 <body>
 		
 		<div class="wrapper d-flex align-items-stretch">
 			<nav id="sidebar">
-				<div class="p-4 pt-5">
+				<div class="p-4 pt-5 sidenav">
 		  		<a href="#" class="img logo rounded-circle mb-5" style="background-image: url(images/about-bg.jpg);"></a>
 	        <ul class="list-unstyled components mb-5">
 	          <li class="active">
@@ -55,7 +64,7 @@
     
       <div id="content" class="p-4 p-md-5">
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-static-top">
           <div class="container-fluid">
 
             <button type="button" id="sidebarCollapse" class="btn btn-primary">
@@ -67,7 +76,7 @@
             </button>
             
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="nav navbar-nav ml-auto">
+              <ul class="nav navbar-nav col-lg-9 ml-auto ">
                 <li class="nav-item active">
                     <a class="nav-link" href="appointmentDetails">Home</a>
                 </li>
@@ -78,12 +87,17 @@
                     <a class="nav-link" href="newAppointmentDataForm">Make New Appointment</a>
                 </li>
                 <li class="nav-item">
-                    {!! Form::open(['url' => '/docDashboardData', 'method' => 'POST']) !!}
-                    @csrf
-                    {!! Form::submit('Doctor Dashboard', ['class' => 'btn btn-sl btn-info'] ) !!}
-                    
-                    {!! Form::close()  !!}
+                    <a class="nav-link" href="newPrescriptionForm">Make New Prescription</a>
                 </li>
+                <ul class="navbar-nav col-lg-1 ml-auto">
+                    <li class="nav-item">
+                        {!! Form::open(['url' => '/docDashboardData', 'method' => 'POST']) !!}
+                        @csrf
+                        {!! Form::submit('Doctor Dashboard', ['class' => 'btn btn-sl btn-info'] ) !!}
+                        
+                        {!! Form::close()  !!}
+                    </li>
+                </ul>
               </ul>
             </div>
           </div>
@@ -154,6 +168,7 @@
                         
                         
                 </script>
+
         
     </div>
 
