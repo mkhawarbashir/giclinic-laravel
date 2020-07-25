@@ -10,9 +10,10 @@
     <div class="content">
         <div class="row">
             <div class="col-lg-8 offset-lg-2">
-                <h2 class="page-title">Appointment Data Form</h2><br>
+                <h2 class="page-title text-center">Appointment Data Form</h2><br>
             </div>
         </div>
+        
         <div class="row">
         <div class="col-lg-8 offset-lg-2">
                          <!-- CONTACT FORM HERE -->
@@ -48,7 +49,7 @@
                                    <div class=" col-sm-6">
                                                   <span style="color:red;font-weight:bold">*</span>
                                         <label for="select">Select Time</label>
-                                        <select class="form-control" id="time" name="time" placeholder="Select Available Time">
+                                        <select class="form-control" id="time" name="time" placeholder="Select Available Time" required>
                                              <option disabled selected>Select Available Time</option>
                                              
                                         </select>
@@ -93,7 +94,8 @@
                                    </div>
                                    <div class="col-md-12   col-sm-6 text-center">
 									  <br><br>
-                                                 <button type="submit" class="btn btn-sl btn-info" id="cf-submit" name="submit">Submit Appointment</button>
+                                                 <button type="submit" class="btn btn-sl btn-info" id="cf-submit" name="submit">Save</button>
+                                                 <a class="btn btn-sl btn-info" href="{{url('appointmentDetails')}}">Cancel</a>
                                    </div>
                               </div>
                         </form>

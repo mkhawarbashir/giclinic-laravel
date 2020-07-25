@@ -44,10 +44,10 @@ class usercontroller extends Controller
               
                 $patID = DB::table('patient_personal')->where('cnic','=',$cnic)->value('patient_id');
 
-                $res='';
+                
                 $res = DB::table('appointment')->where('date','=',strtotime($date))->where('patient_id','=',$patID)->get();
 
-                if($res==''){
+                if($res->count() == 0){
                     $value = usermodel::insert_appointment($data1, $forid);
                     if($value){ 
                     return redirect('/')->with('success','Dear '. $fname . ' '. $lname . '. Your appointment for '. $date . ' at '. $time . ' has been made successfully');
@@ -90,15 +90,15 @@ class usercontroller extends Controller
               
                 $patID = DB::table('patient_personal')->where('cnic','=',$cnic)->value('patient_id');
 
-                $res='';
-                $res = DB::table('appointment')->where('date','=',strtotime($date))->where('patient_id','=',$patID)->get();
-
-                if($res==''){
-                $value = usermodel::insert_appointment($data1, $forid);
+               
+                $res = DB::table('appointment')->where('patient_id','=',$patID)->where('date','=',strtotime($date))->select('appointment_id')->get();
                 
-                $patient = DB::table('patient_personal')->join('appointment', 'patient_personal.patient_id','=','appointment.patient_id')->where('date',date('Y-m-d'))->select('patient_personal.*','appointment.*')->get();
+                if($res->count() == 0){
+                    $value = usermodel::insert_appointment($data1, $forid);
+                    
+                    $patient = DB::table('patient_personal')->join('appointment', 'patient_personal.patient_id','=','appointment.patient_id')->where('date',date('Y-m-d'))->select('patient_personal.*','appointment.*')->get();
 
-                return view('appointmentDetails', ['patient' => $patient, 'date'=>date('d-m-Y')]);
+                    return view('appointmentDetails', ['patient' => $patient, 'date'=>date('d-m-Y')]);
                 }
                 else{
 

@@ -45,7 +45,7 @@
                             <div class="form-group">
                             <strong>{{Form::label('title', 'Disease')}}<span class="text-danger">*</span></strong>
                                         
-                            {!!Form::select('disease', ['blood pressure'=>'Blood Pressure', 'sugar'=>'Sugar', 'fever'=>'Fever', 'stomach pain'=>'Stomach Pain'], '',['class'=>'form-control', 'multiple'=>'multiple'])!!}
+                            {!!Form::select('disease[]', ['blood pressure'=>'Blood Pressure', 'sugar'=>'Sugar', 'fever'=>'Fever', 'stomach pain'=>'Stomach Pain'], '',['class'=>'form-control', 'multiple'=>'multiple'])!!}
                             </div>
                         </div>
                         <div class="col-sm-6">

@@ -45,6 +45,7 @@
                                     
                                     <td>
                                     {{ Form::hidden('patient_id', $data->patient_id) }}
+                                    {{ Form::hidden('appointment_id', $data->appointment_id) }}
                                     {!! Form::submit('View', ['class' => 'btn btn-sl btn-info'] ) !!} </td>
                                     
                                     <!-- <td>

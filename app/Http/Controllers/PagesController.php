@@ -75,5 +75,10 @@ class PagesController extends Controller
 
         return view('newPrescriptionForm');
     }
+    
+    public function showPrescriptionData(){
+
+        return view('showPrescriptionData');
+    }
 }
 

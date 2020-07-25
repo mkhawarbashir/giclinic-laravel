@@ -29,6 +29,7 @@ Route::get('/viewPatientAppointmentsForm', 'PagesController@viewPatientAppointme
 Route::get('/updateAppointmentForm', 'PagesController@updateAppointmentForm');
 Route::get('/docDashboard', 'PagesController@docDashboard');
 Route::get('/newPrescriptionForm', 'PagesController@newPrescriptionForm');
+Route::get('/showPrescriptionData', 'PagesController@showPrescriptionData');
 
 Route::post('appointmentsubmit','usercontroller@appointmentsubmit');
 Route::post('newappointmentsubmit','usercontroller@newappointmentsubmit');
@@ -47,6 +48,9 @@ Route::post('updateAppointment','DynamicDepdendent@updateAppointment');
 Route::post('updateAppt','DynamicDepdendent@updateAppt');
 Route::post('docDashboardData','DynamicDepdendent@docDashboardData');
 Route::post('addNewPrescription','DynamicDepdendent@addNewPrescription');
+Route::post('prescriptionData','DynamicDepdendent@prescriptionData');
+Route::post('appointDetailCat','DynamicDepdendent@appointDetailCat');
+
 
 //Function to return data for Home Page
 Route::get('appointmentDetails', function () {
@@ -57,7 +61,7 @@ Route::get('appointmentDetails', function () {
 
     $patient = DB::table('patient_personal')->join('appointment', 'patient_personal.patient_id','=','appointment.patient_id')->where('date',date('Y-m-d'))->select('patient_personal.*','appointment.*')->get();
 
-    return view('appointmentDetails', ['patient' => $patient, 'date'=>date('d-m-Y')]);
+    return view('appointmentDetails', ['patient' => $patient, 'date'=>date('d-m-Y'), 'status'=>'All']);
 });
 
 Route::get('viewAllPatientsForm', function () {

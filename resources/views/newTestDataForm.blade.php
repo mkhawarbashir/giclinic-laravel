@@ -1,4 +1,5 @@
 @extends('layouts.clinicUser')
+@include('flash-message')
 @section('content')
 <br/> <br/> <br/>
 
@@ -8,7 +9,7 @@
     <div class="content">
         <div class="row">
             <div class="col-lg-8 offset-lg-2">
-                <h2 class="page-title">Lab Test Data Form</h2>
+                <h2 class="page-title text-center">Lab Test Data Form</h2>
             </div>
         </div>
         <div class="row">
@@ -16,23 +17,17 @@
                 {!! Form::open(['url' => '/addNewTest', 'method' => 'POST']) !!}
                 @csrf
                     <div class="row">
-                        <div class="col-sm-6">
+                        <div class="col-sm-12">
                     
                             <div class="form-group">
                             <strong>{{Form::label('title', 'Test Name')}}<span class="text-danger">*</span></strong>
-                            {!!Form::text('tname', '', ['class'=>'form-control'])!!}
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                            <strong>{{Form::label('title', 'Laboratory')}}<span class="text-danger">*</span></strong>
-                            {!!Form::text('lname', '', ['class'=>'form-control'])!!}
+                            {!!Form::text('tname', '', ['class'=>'form-control', 'required'])!!}
                             </div>
                         </div>
                         <div class="col-sm-12">
                             <div class="form-group">
                             <strong>{{Form::label('title', 'Test Description')}}<span class="text-danger">*</span></strong>
-                            {!!Form::textarea('tdesc', '', ['class'=>'form-control', 'rows'=>4])!!}
+                            {!!Form::textarea('tdesc', '', ['class'=>'form-control', 'rows'=>4, 'required'])!!}
                             </div>
                         </div>
                     </div>

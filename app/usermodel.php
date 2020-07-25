@@ -64,22 +64,22 @@ class usermodel extends Model
     
     public static function addNewDiseaseData($data){
 
-      DB::table('disease')->insert($data);
-      return 1;
+      return DB::table('disease')->insert($data);
+      //return 1;
 
     }
 
     public static function addNewTestData($data){
 
-      DB::table('test')->insert($data);
-      return 1;
+      return DB::table('test')->insert($data);
+      //return 1;
 
     }
 
     public static function addNewMedicineData($data){
 
-      DB::table('medicine')->insert($data);
-      return 1;
+      return DB::table('medicine')->insert($data);
+      //return 1;
 
     }
 }

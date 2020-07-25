@@ -7,6 +7,10 @@
      <meta http-equiv="X-UA-Compatible" content="IE=Edge">
      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
+     
+     <script src="{{asset('/js/jquery.min.js')}}"></script>
+     
+     
 	 <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
    <link rel="stylesheet" href="{{ asset('/css/template.css') }}">
 
@@ -17,6 +21,7 @@
      <link rel="stylesheet" type="text/css" href="{{ asset('/css/bootstrap-datepicker.css') }}">
      
      <script src="js/bootstrap-multiselect.js"></script>
+     
      
     <style>
     .sidenav {
@@ -85,9 +90,6 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="newAppointmentDataForm">Make New Appointment</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="newPrescriptionForm">Make New Prescription</a>
                 </li>
                 <ul class="navbar-nav col-lg-1 ml-auto">
                     <li class="nav-item">
@@ -166,10 +168,88 @@
                         });
                        // $("#datepicker").datepicker("setDate", '-- Select Date --');//new Date());
                         
-                        
+                      
+       
+                $('#addRow').click(function(){
+                        addRow();
+                });
+
+
+
+
+           function addRow()
+           {
+               var html = '<tr>'+
+                           '<td>'+
+                               '<select class="form-control select2" id="drugType">'+
+                                   '<option value="">Type</option>'+
+                                   '<option value="Inj">Injection</option>'+
+                                   '<option value="Tab">Tablet</option>'+
+                                   '<option value="Cap">Capsule</option>'+
+                                   '<option value="Syp">Syrup</option>'+
+                               '</select>'+
+                           '</td>'+
+                           '<td>'+
+                               '<input list="medicine" name="drug" class="form-control" placeholder="Select Drug"/>'+
+                               '<datalist id="medicine">'+
+                                   '<option value="Disprin">'+
+                                   '<option value="Paracetamol">'+
+                                   '<option value="Dicloran">'+
+                                   '<option value="Teramycin">'+
+                               '</datalist>'+
+                           '</td>'+
+                           '<td>'+ 
+                               '<input type="text" id="strength" class="form-control" placeholder="Strength"/>'+
+                           '</td>'+
+                           '<td>'+ 
+                               '<input list="dose" name="dose" class="form-control" placeholder="Dose"/>'+
+                                   '<datalist id="dose">'+
+                                       '<option value="0+0+1">'+
+                                       '<option value="0+1+0">'+
+                                       '<option value="0+1+1">'+
+                                       '<option value="1+0+0">'+
+                                       '<option value="1+1+0">'+
+                                       '<option value="1+0+1">'+
+                                       '<option value="1+1+1">'+
+                                   '</datalist>'+
+                           '</td>'+
+                           '<td>'+ 
+                               '<input type="text" id="duration" class="form-control" placeholder="Duration"/>'+
+                           '</td>'+
+                           '<td>'+ 
+                               '<input type="text" id="drug_advice" class="form-control" placeholder="Advice"/>'+
+                           '</td>'+
+                           '<td style="text-align:center"><a href="#" name="addRow" id="addRow" class="btn btn-danger remove">-</a></td>'+
+                       '</tr>';
+                    $('tbody').append(html);
+                }
+
+                $('tbody').on('click','.remove',function(){
+                    $(this).parent().parent().remove();
+                });
+         
+
+                function tdata(val, date){
+                    alert(val+' '+date);
+                    $.ajax({
+                        url: '/appointDetailCat',
+                        type: 'POST',
+                        cache: false,
+                        data: { 'cat':val, 'date': date },
+                        success: function (data) { 
+
+                                        },
+                        error: function (data) {   
+                                        }
+                        });
+
+                    
+                }
+
                 </script>
 
-        
+
+
     </div>
 
 </body>
