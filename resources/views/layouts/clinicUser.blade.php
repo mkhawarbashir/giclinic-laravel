@@ -49,7 +49,7 @@
 	            <a href="newPatientDataForm">Add New Patient</a>
 	          </li>
 	          <li>
-                <a href="newAppointmentDataForm">Make New Appointment</a>
+                <a href="newAppointmentwithID">Make New Appointment</a>
 	          </li>
 	          <li class="nav-item">
                 <a class="nav-link" href="newTestDataForm">Add New Test</a>
@@ -89,12 +89,13 @@
                     <a class="nav-link" href="viewAllPatientsForm">View All Patients</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="newAppointmentDataForm">Make New Appointment</a>
+                    <a class="nav-link" href="newAppointmentwithID">Make New Appointment</a>
                 </li>
                 <ul class="navbar-nav col-lg-1 ml-auto">
                     <li class="nav-item">
                         {!! Form::open(['url' => '/docDashboardData', 'method' => 'POST']) !!}
                         @csrf
+                        {{ Form::hidden('status', 'Arrived') }}
                         {!! Form::submit('Doctor Dashboard', ['class' => 'btn btn-sl btn-info'] ) !!}
                         
                         {!! Form::close()  !!}
@@ -129,7 +130,6 @@
                         $('#doapicker').datepicker({
                             daysOfWeekDisabled: [0,6],
                             startDate: '+0d',
-                            endDate: '+13d',
                             format: 'dd-mm-yyyy'
                             }).on('changeDate', function(e) {
                                 var mydate = $(this).val();

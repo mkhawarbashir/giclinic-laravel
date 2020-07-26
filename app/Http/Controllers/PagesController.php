@@ -80,5 +80,10 @@ class PagesController extends Controller
 
         return view('showPrescriptionData');
     }
+    
+    public function newAppointmentwithID(){
+
+        return view('newAppointmentwithID');
+    }
 }
 

@@ -98,7 +98,7 @@ class usercontroller extends Controller
                     
                     $patient = DB::table('patient_personal')->join('appointment', 'patient_personal.patient_id','=','appointment.patient_id')->where('date',date('Y-m-d'))->select('patient_personal.*','appointment.*')->get();
 
-                    return view('appointmentDetails', ['patient' => $patient, 'date'=>date('d-m-Y')]);
+                    return view('appointmentDetails', ['patient' => $patient, 'date'=>date('d-m-Y'), 'status'=>'All']);
                 }
                 else{
 

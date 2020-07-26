@@ -83,7 +83,7 @@ class DynamicDepdendent extends Controller
 
         $patient = DB::table('patient_personal')->join('appointment', 'patient_personal.patient_id','=','appointment.patient_id')->where('date',date('Y-m-d'))->select('patient_personal.*','appointment.*')->get();
 
-        return view('appointmentDetails', ['patient' => $patient, 'date' => date('d-m-Y')]);
+        return view('appointmentDetails', ['patient' => $patient, 'date' => date('d-m-Y'), 'status'=>'All']);
     }
 
     public function addPatientData(Request $request)
@@ -110,7 +110,7 @@ class DynamicDepdendent extends Controller
 
         $patient = DB::table('patient_personal')->join('appointment', 'patient_personal.patient_id','=','appointment.patient_id')->where('date',date('Y-m-d'))->select('patient_personal.*','appointment.*')->get();
 
-        return view('appointmentDetails', ['patient' => $patient, 'date' => date('d-m-Y')]);
+        return view('appointmentDetails', ['patient' => $patient, 'date' => date('d-m-Y'), 'status'=>'All']);
     }
 
     public function addDiseaseData(Request $request)
@@ -124,7 +124,7 @@ class DynamicDepdendent extends Controller
 
             $patient = DB::table('patient_personal')->join('appointment', 'patient_personal.patient_id','=','appointment.patient_id')->where('date',date('Y-m-d'))->select('patient_personal.*','appointment.*')->get();
 
-            return view('appointmentDetails', ['patient' => $patient, 'date' => date('d-m-Y')]);
+            return view('appointmentDetails', ['patient' => $patient, 'date' => date('d-m-Y'), 'status'=>'All']);
         }
         catch(Exception $e)
         {
@@ -145,7 +145,7 @@ class DynamicDepdendent extends Controller
         
             $patient = DB::table('patient_personal')->join('appointment', 'patient_personal.patient_id','=','appointment.patient_id')->where('date',date('Y-m-d'))->select('patient_personal.*','appointment.*')->get();
 
-            return view('appointmentDetails', ['patient' => $patient, 'date' => date('d-m-Y')]);
+            return view('appointmentDetails', ['patient' => $patient, 'date' => date('d-m-Y'), 'status'=>'All']);
         }
         catch(Exception $e)
         {
@@ -167,7 +167,7 @@ class DynamicDepdendent extends Controller
 
             $patient = DB::table('patient_personal')->join('appointment', 'patient_personal.patient_id','=','appointment.patient_id')->where('date',date('Y-m-d'))->select('patient_personal.*','appointment.*')->get();
 
-            return view('appointmentDetails', ['patient' => $patient, 'date' => date('d-m-Y')]);
+            return view('appointmentDetails', ['patient' => $patient, 'date' => date('d-m-Y'), 'status'=>'All']);
         }
         catch(Exception $e)
         {
@@ -210,7 +210,7 @@ class DynamicDepdendent extends Controller
         
         $patient = DB::table('patient_personal')->join('appointment', 'patient_personal.patient_id','=','appointment.patient_id')->where('date',date('Y-m-d'))->select('patient_personal.*','appointment.*')->get();
         
-        return view('appointmentDetails', ['patient' => $patient, 'date' => date('d-m-Y')]);
+        return view('appointmentDetails', ['patient' => $patient, 'date' => date('d-m-Y'), 'status'=>'All']);
         
     }
 
@@ -225,11 +225,12 @@ class DynamicDepdendent extends Controller
     }
 
     
-    public function docDashboardData()
+    public function docDashboardData(Request $request)
     {
-        $patient = DB::table('patient_personal')->join('appointment', 'patient_personal.patient_id','=','appointment.patient_id')->where('date',date('Y-m-d'))->select('patient_personal.*','appointment.*')->get();
+        $status = $request->input('status');
+        $patient = DB::table('patient_personal')->join('appointment', 'patient_personal.patient_id','=','appointment.patient_id')->where('date','=',date('Y-m-d'))->where('Status','=',$status)->select('patient_personal.*','appointment.*')->get();
        // $data = array('appointment_id'=>$request->input('apptID'),'patient_id'=>$request->input('patID'),'first_name'=>$request->input('first_name'),'last_name'=>$request->input('last_name'),"date"=>$request->input('date'),"time"=>$request->input('time'));
-        return view('docDashboard', ['patient' => $patient]);
+        return view('docDashboard', ['patient' => $patient, 'status'=>$status]);
     }
 
     public function addNewPrescription(Request $request)
@@ -251,5 +252,13 @@ class DynamicDepdendent extends Controller
 
         return view('showPrescriptionData', ['comp'=>$chfComp,'drug'=>$drug]);
 
+    }
+
+    public function appointmentwithCNIC(Request $request){
+
+        $cnic = $request->input('cnic');
+        $patient = DB::table('patient_personal')->where('cnic','=',$cnic)->select('patient_personal.*')->get();
+
+        return view('newAppointmentDataForm', ['patient' => $patient]);
     }
 }

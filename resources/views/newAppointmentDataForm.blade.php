@@ -17,25 +17,27 @@
         <div class="row">
         <div class="col-lg-8 offset-lg-2">
                          <!-- CONTACT FORM HERE -->
+                        
                          <form id="appointment-form" role="form" method="post" action="newappointmentsubmit">
                          @csrf
                               <!-- SECTION TITLE -->
                               <!-- <div class="section-title wow fadeInUp" data-wow-delay="0.4s">
                                    <h2>Make an appointment</h2>
                               </div> -->
+                         @foreach($patient as $data)
                          <div class="row">
                               <div class="wow fadeInUp" data-wow-delay="0.8s">
                                    <div class=" col-sm-6">
                                         <span style="color:red;font-weight:bold">*</span>
 									    <label for="name">First Name</label>
-                                        <input type="text" class="form-control" id="fname" name="fname" placeholder="First Name" required>
+                                        <input type="text" class="form-control" id="fname" value={{$data->first_name}} name="fname" placeholder="First Name" readonly>
                                         <br>
                                    </div>
 
                                    <div class=" col-sm-6">
 									    <span style="color:red;font-weight:bold">*</span>
                                         <label for="name">Last Name</label>
-                                        <input type="text" class="form-control" id="lname" name="lname" placeholder="Last Name" required>
+                                        <input type="text" class="form-control" id="lname" value={{$data->last_name}} name="lname" placeholder="Last Name" readonly>
                                         <br>
                                    </div>
 
@@ -55,39 +57,24 @@
                                         </select>
                                         <br>
                                    </div>
-                                   {{ csrf_field() }}
-
-								   <div class=" col-sm-6">
-                                           <span style="color:red;font-weight:bold">*</span>
-                                        <label for="select">Select City</label>
-                                        <select class="form-control" id="city" name="city">
-                                             <option>Lahore</option>
-                                             <option>Gujranwala</option>
-                                             <option>Kasur</option>
-                                             <option>Sahiwal</option>
-											 <option>Okara</option>
-                                             <option>Pattoki</option>
-                                             <option>Sialkot</option>
-                                             <option>Muridkey</option>
-											 <option>Rawalpindi</option>
-                                             <option>Jehlum</option>
-                                             <option>Gujrat</option>
-                                             
-                                        </select>
-                                        <br>
+                                   <div class=" col-sm-6">
+									    <span style="color:red;font-weight:bold">*</span>
+                                        <label for="city">City</label>
+                                        <input type="text" class="form-control" id="city" name="city" value={{$data->city}} readonly minlength="11" maxlength="11">
+							     <br>
                                    </div>
 
                                    <div class=" col-sm-6">
 									    <span style="color:red;font-weight:bold">*</span>
                                         <label for="telephone">Phone Number</label>
-                                        <input type="tel" class="form-control" id="phone" name="phone" placeholder="Phone" required minlength="11" maxlength="11">
+                                        <input type="tel" class="form-control" id="phone" name="phone" value={{$data->contact_number}} readonly minlength="11" maxlength="11">
 								 <br>  
                                    </div>
 
                                    <div class=" col-sm-6">
 									    <span style="color:red;font-weight:bold">*</span>
                                         <label for="Message">CNIC</label>
-                                        <input type="tel" class="form-control" id="cnic" name="cnic" placeholder="35200xxxxxxxx" required minlength="13" maxlength="13">
+                                        <input type="tel" class="form-control" id="cnic" name="cnic" value={{$data->cnic}} readonly minlength="13" maxlength="13">
                                         <br>
                                    </div>
                                             
@@ -98,6 +85,7 @@
                                                  <a class="btn btn-sl btn-info" href="{{url('appointmentDetails')}}">Cancel</a>
                                    </div>
                               </div>
+                         @endforeach
                         </form>
                        
                     </div>

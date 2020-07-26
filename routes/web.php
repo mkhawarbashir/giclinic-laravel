@@ -30,6 +30,7 @@ Route::get('/updateAppointmentForm', 'PagesController@updateAppointmentForm');
 Route::get('/docDashboard', 'PagesController@docDashboard');
 Route::get('/newPrescriptionForm', 'PagesController@newPrescriptionForm');
 Route::get('/showPrescriptionData', 'PagesController@showPrescriptionData');
+Route::get('/newAppointmentwithID', 'PagesController@newAppointmentwithID');
 
 Route::post('appointmentsubmit','usercontroller@appointmentsubmit');
 Route::post('newappointmentsubmit','usercontroller@newappointmentsubmit');
@@ -50,7 +51,7 @@ Route::post('docDashboardData','DynamicDepdendent@docDashboardData');
 Route::post('addNewPrescription','DynamicDepdendent@addNewPrescription');
 Route::post('prescriptionData','DynamicDepdendent@prescriptionData');
 Route::post('appointDetailCat','DynamicDepdendent@appointDetailCat');
-
+Route::post('appointmentwithCNIC', 'DynamicDepdendent@appointmentwithCNIC');
 
 //Function to return data for Home Page
 Route::get('appointmentDetails', function () {
