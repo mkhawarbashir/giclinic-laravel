@@ -24,7 +24,7 @@
                                 <option value="Checked">Checked</option>
                                 <option value="All">All Patients</option>
                                 </select>
-                                <button type="submit" class="col-sm-3  form-control" form="dateform" value="Submit">Submit</button><br>
+                                <button type="submit" class="col-sm-3  form-control btn btn-sl btn-info" form="dateform" value="Submit">Submit</button><br>
                             </div>
                             </form>
                             

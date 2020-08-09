@@ -240,7 +240,7 @@
                                    <div class="col-md-6 col-sm-6 ">
 									    <span style="color:red;font-weight:bold">*</span>
                                         <label for="date">Select Date</label>
-                                        <input type="text" name="datepicker" id="datepicker" value="" class="form-control dynamic" required placeholder="-- Select Date --">
+                                        <input type="text" name="datepicker" id="datepicker" value="" class="form-control dynamic" required placeholder="-- Select Date --" readonly>
                                         
                                    </div>
 

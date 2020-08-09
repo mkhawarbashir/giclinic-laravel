@@ -23,9 +23,12 @@
      <link rel="stylesheet" href="css/tooplate-style.css">
      <link rel="stylesheet" href="css/logincss.css">
     <style>
-        
-
+        .padding
+        {
+            padding: 0px 0px 0px 30px;
+        }
     </style>
+
 </head>
 <body id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="30">
     <div class="header">
@@ -50,8 +53,8 @@
             <div class="container">
 
                <div class="navbar-header">
-                <img src="/images/logo.png" alt="" height=50 width=60>
-                <h6 class="font-weight-bolder"><small>Liver and <br/> Stomach Clinic </small></h6>
+                <img src="/images/logo.png" alt="" height=80 width=120 class="padding">
+                <h4 class="font-weight-bolder">Liver and Stomach Clinic </h4>
                 
                     <!-- lOGO TEXT HERE -->
                     <!-- <a href="/" class="navbar-brand"><i class="fa fa-h-square"></i>ealth Center</a> -->
@@ -61,14 +64,14 @@
                <!-- <div class="collapse navbar-collapse"> -->
                
                     <ul class="nav navbar-nav navbar-right">
-                         <li><a href="/#top" >Home</a></li>
+                         <li><a href="/#top">Home</a></li>
                          <li><a href="/#team">Our Services</a></li>
                          <li><a href="/posts/#blog_index">Blogs</a></li>
                          <li><a href="/#news">News</a></li>
                          <li><a href="/#about">About Us</a></li>
                          <li><a href="/#google-map" >Contact</a></li>
-                         <li class="appointment-btn"><a href="/#appointment">Make Appointment</a></li>
-						 <li class="appointment-btn"><a href="/clinic_user">Clinic Staff Login</a></li>
+                         <li ><a href="/#appointment">Make Appointment</a></li>
+						 <li ><a href="/clinic_user">Clinic Staff Login</a></li>
                     </ul>
                <!-- </div> -->
 

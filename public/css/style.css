@@ -8242,8 +8242,11 @@ h1, h2, h3, h4, h5,
       display: block;
       color: rgba(255, 255, 255, 0.8);
       border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
-      #sidebar ul li a:hover {
-        color: #f8b739; }
+    #sidebar ul li a:hover {
+      color: #f8b739; }
+    #sidebar ul li a:active {
+      color: red; 
+      background-color: white;}
     #sidebar ul li.active > a {
       background: transparent;
       color: #f8b739; }

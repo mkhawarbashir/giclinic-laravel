@@ -44,7 +44,7 @@
                                    <div class=" col-sm-6 ">
 									    <span style="color:red;font-weight:bold">*</span>
                                         <label for="date">Select Appointment Date</label>
-                                        <input type="text" name="doapicker" id="doapicker" value="" class="form-control dynamic" required placeholder="-- Select Date --">
+                                        <input type="text" name="doapicker" id="doapicker" value="" class="form-control dynamic" required placeholder="-- Select Date --" readonly>
                                         <br>
                                    </div>
 

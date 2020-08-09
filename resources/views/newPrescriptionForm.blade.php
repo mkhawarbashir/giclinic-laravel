@@ -1,4 +1,5 @@
 @extends('layouts.clinicUser')
+@include('flash-message')
 @section('content')
 <br/> <br/> <br/>
 
@@ -17,10 +18,14 @@
             </div>
             <div class="col-md-12">
             <form action="prescriptionData" method="post" id="addDrugToListForm">
+                <input type="hidden" name="patient_fname" value="{{$patient_fname}}"/>
+                <input type="hidden" name="patient_lname" value="{{$patient_lname}}"/>
                 <div class="row">
+                
                     <div class="col-md-3">
+                    <br><input type="text" name="fee" placeholder="Fee"/>
                         <div class="form-group-custom">
-                            <br><br>
+                            <br>
                             <label class="control-label">Chief Complains</label><i class="bar"></i>
                             <textarea required="required" name="chiefComp" rows="2"></textarea>
                         </div>
@@ -38,17 +43,24 @@
                         </div>
                         <div class="form-group-custom">
                             <label class="control-label">Lab Tests</label><i class="bar"></i><br>
-                            <textarea required="required" name="labTests" rows="2"></textarea>
+                            <!-- <textarea required="required" name="labTests" rows="2"></textarea> -->
+                            <select name="labTests[]" id="labtests" multiple class="form-control col-md-8">
+                            @foreach($tests as $test)
+                                <option value="{{$test->test_name}}">{{$test->test_name}}</option>
+                            @endforeach
+                            </select>
+                            <br><br><br><br><br>
                         </div>
                         <div class="form-group-custom">
                             <label class="control-label">Advices</label><i class="bar"></i><br>
-                            <textarea id="advice" required="required" name="advice"></textarea>
+                            <textarea required="required" name="advice" rows="2"></textarea>
                         </div>
                         <div class="form-group-custom">
                             <label class="control-label">Next Visit</label><i class="bar"></i><br>
                             <input type="date" name="nxtVisitDate">
                         </div>
-
+                            <input type="hidden" name="patient_id" value="{{$patient_id}}">
+                            <input type="hidden" name="appointment_id" value="{{$appointment_id}}">
                     </div>
                     <div class="col-md-9">
                         <h3>Rx</h3>
@@ -70,7 +82,7 @@
                                     <tbody>
                                         <tr>
                                         <td>
-                                            <select class="form-control select2" id="drugType">
+                                            <select class="form-control select2" id="drugType" name="type[]">
                                                 <option value="">Type</option>
                                                 <option value="Inj">Injection</option>
                                                 <option value="Tab">Tablet</option>
@@ -79,34 +91,38 @@
                                             </select>
                                         </td>
                                         <td>
-                                            <input list="medicine" name="drug" class="form-control" placeholder="Select Drug"/>
+                                            <input list="medicine" name="drug[]" class="form-control" placeholder="Select Drug"/>
+                                            <!-- <select class="form-control select2" name="drug[]"> -->
                                             <datalist id="medicine">
-                                                <option value="Disprin">
-                                                <option value="Paracetamol">
-                                                <option value="Dicloran">
-                                                <option value="Teramycin">
+                                                @foreach($medicines as $medicine)
+                                                    <option value="{{$medicine->medicine_name}}">
+                                                @endforeach
+                                                <!-- <option value="Disprin">Disprin</option>
+                                                <option value="Paracetamol">Paracetamol</option>
+                                                <option value="Dicloran">Dicloran</option>
+                                                <option value="Teramycin">Teramycin</option> -->
                                             </datalist>
+                                            <!-- </select> -->
                                         </td>
                                         <td> 
-                                            <input type="text" id="strength" class="form-control" placeholder="Strength"/>
+                                            <input type="text" id="strength" class="form-control" placeholder="Strength" name="strength[]"/>
                                         </td>
                                         <td> 
-                                            <input list="dose" name="dose" class="form-control" placeholder="Dose"/>
+                                            <input list="dose" name="dose[]" class="form-control" placeholder="Dose"/>
+                                            <!-- <select name="dose[]" class="form-control" placeholder="Dose"> -->
                                                 <datalist id="dose">
-                                                    <option value="0+0+1">
-                                                    <option value="0+1+0">
-                                                    <option value="0+1+1">
-                                                    <option value="1+0+0">
-                                                    <option value="1+1+0">
-                                                    <option value="1+0+1">
-                                                    <option value="1+1+1">
+                                                    <option value="صبح">
+                                                    <option value="شام">
+                                                    <option value="صبح ۔ شام">
+                                                    <option value="صبح ۔دوپہر ۔ شام">
                                                 </datalist>
+                                            <!-- </select> -->
                                         </td>
                                         <td>
-                                            <input type="text" id="duration" class="form-control" placeholder="Duration"/>
+                                            <input type="text" id="duration" class="form-control" placeholder="Duration" name="duration[]"/>
                                         </td>
                                         <td> 
-                                            <input type="text" id="drug_advice" class="form-control" placeholder="Advice"/>
+                                            <input type="text" id="drug_advice" class="form-control" placeholder="Advice" name="advices[]"/>
                                         </td>
                                         <td style="text-align:center"><a href="#" name="addRow" id="addRow" class="btn btn-danger remove">-</a></td>
                                     </tr>

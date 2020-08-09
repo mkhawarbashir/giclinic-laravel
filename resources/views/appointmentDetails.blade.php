@@ -20,7 +20,7 @@
           </div>
           <div>
           <input type="hidden" id="date" name="date" value="{{$date}}">
-          <button type="submit" class="col-sm-3  form-control" form="dateform" value="Submit">Submit</button>              
+          <button type="submit" class="col-sm-3  form-control btn btn-sl btn-info" form="dateform" value="Submit">Submit</button>              
           </div>
       </div>
       

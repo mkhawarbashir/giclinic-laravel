@@ -85,5 +85,20 @@ class PagesController extends Controller
 
         return view('newAppointmentwithID');
     }
+    
+    public function prescriptionPrint(){
+
+        return view('prescriptionPrint');
+    }
+
+    public function timeSlotForm(){
+
+        return view('timeSlotForm');
+    }
+    
+    public function timeSlotManagement(){
+
+        return view('timeSlotManagement');
+    }
 }
 

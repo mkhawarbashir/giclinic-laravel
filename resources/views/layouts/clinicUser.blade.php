@@ -20,6 +20,7 @@
      <link rel="stylesheet" type="text/css" href="{{ asset('/css/verticalNavBar.css') }}">
      <link rel="stylesheet" type="text/css" href="{{ asset('/css/bootstrap-datepicker.css') }}">
      
+     
      <script src="js/bootstrap-multiselect.js"></script>
      
      
@@ -32,33 +33,46 @@
 
         float:right;
     }
+
     </style>
+<script>
+</script>
+
 
 </head>
 <body>
 		
-		<div class="wrapper d-flex align-items-stretch">
+		<div id="leftbar" class="wrapper d-flex align-items-stretch">
 			<nav id="sidebar">
-				<div class="p-4 pt-5 sidenav">
-		  		<a href="#" class="img logo rounded-circle mb-5" style="background-image: url(images/about-bg.jpg);"></a>
-	        <ul class="list-unstyled components mb-5">
-	          <li class="active">
-                <a href="appointmentDetails">Home</a>
+			<div class="p-4 pt-5 sidenav">
+		  		<a href="#" class="img logo rounded-circle mb-5" style="background-image: url(images/logo.png);"></a>
+	        <ul class="list-unstyled components mb-5 nav1">
+              <li >
+                <a href="/">Website Home</a>
 	          </li>
-	          <li>
+              <li class="{{ Request::path() == 'appointmentDetails' ? 'active' : '' }}">
+                <a href="appointmentDetails">Clinic Home</a>
+	          </li>
+	          <li class="{{ Request::path() == 'newPatientDataForm' ? 'active' : '' }}">
 	            <a href="newPatientDataForm">Add New Patient</a>
 	          </li>
-	          <li>
+	          <li class="{{ Request::path() == 'newAppointmentwithID' ? 'active' : '' }}">
                 <a href="newAppointmentwithID">Make New Appointment</a>
 	          </li>
-	          <li class="nav-item">
+	          <li class="{{ Request::path() == 'newTestDataForm' ? 'active' : '' }}">
                 <a class="nav-link" href="newTestDataForm">Add New Test</a>
             </li>
-            <li class="nav-item">
+            <li class="{{ Request::path() == 'newDiseaseDataForm' ? 'active' : '' }}">
                 <a class="nav-link" href="newDiseaseDataForm">Add New Disease</a>
             </li>
-            <li class="nav-item">
+            <li class="{{ Request::path() == 'newMedicineDataForm' ? 'active' : '' }}">
                 <a class="nav-link" href="newMedicineDataForm">Add New Medicine</a>
+            </li>
+            <li class="{{ Request::path() == 'timeSlotForm' ? 'active' : '' }}">
+                <a class="nav-link" href="timeSlotForm">Time Slot Settings</a>
+            </li>
+            <li class="{{ Request::path() == 'managetimeslot' ? 'active' : '' }}">
+                <a class="nav-link" href="managetimeslot">Time Slot Management</a>
             </li>
 	        </ul>
 
@@ -82,17 +96,20 @@
             
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="nav navbar-nav col-lg-9 ml-auto ">
-                <li class="nav-item active">
-                    <a class="nav-link" href="appointmentDetails">Home</a>
-                </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="/">Website Home</a>
+                </li>
+                <li  class="{{ Request::path() == 'appointmentDetails' ? 'active' : '' }}">
+                    <a class="nav-link" href="appointmentDetails">Clinic Home</a>
+                </li>
+                <li class="{{ Request::path() == 'viewAllPatientsForm' ? 'active' : '' }}">
                     <a class="nav-link" href="viewAllPatientsForm">View All Patients</a>
                 </li>
-                <li class="nav-item">
+                <li class="{{ Request::path() == 'newAppointmentwithID' ? 'active' : '' }}">
                     <a class="nav-link" href="newAppointmentwithID">Make New Appointment</a>
                 </li>
                 <ul class="navbar-nav col-lg-1 ml-auto">
-                    <li class="nav-item">
+                    <li class="{{ Request::path() == 'docDashboardData' ? 'active' : '' }}">
                         {!! Form::open(['url' => '/docDashboardData', 'method' => 'POST']) !!}
                         @csrf
                         {{ Form::hidden('status', 'Arrived') }}
@@ -181,7 +198,7 @@
            {
                var html = '<tr>'+
                            '<td>'+
-                               '<select class="form-control select2" id="drugType">'+
+                               '<select class="form-control select2" id="drugType" name="type[]">'+
                                    '<option value="">Type</option>'+
                                    '<option value="Inj">Injection</option>'+
                                    '<option value="Tab">Tablet</option>'+
@@ -190,7 +207,7 @@
                                '</select>'+
                            '</td>'+
                            '<td>'+
-                               '<input list="medicine" name="drug" class="form-control" placeholder="Select Drug"/>'+
+                               '<input list="medicine" name="drug[]" class="form-control" placeholder="Select Drug"/>'+
                                '<datalist id="medicine">'+
                                    '<option value="Disprin">'+
                                    '<option value="Paracetamol">'+
@@ -199,25 +216,22 @@
                                '</datalist>'+
                            '</td>'+
                            '<td>'+ 
-                               '<input type="text" id="strength" class="form-control" placeholder="Strength"/>'+
+                               '<input type="text" id="strength" class="form-control" placeholder="Strength" name="strength[]"/>'+
                            '</td>'+
                            '<td>'+ 
-                               '<input list="dose" name="dose" class="form-control" placeholder="Dose"/>'+
+                               '<input list="dose" name="dose[]" class="form-control" placeholder="Dose"/>'+
                                    '<datalist id="dose">'+
-                                       '<option value="0+0+1">'+
-                                       '<option value="0+1+0">'+
-                                       '<option value="0+1+1">'+
-                                       '<option value="1+0+0">'+
-                                       '<option value="1+1+0">'+
-                                       '<option value="1+0+1">'+
-                                       '<option value="1+1+1">'+
+                                        '<option value="صبح">'+
+                                        '<option value="شام">'+
+                                        '<option value="صبح ۔ شام">'+
+                                        '<option value="صبح ۔دوپہر ۔ شام">'+
                                    '</datalist>'+
                            '</td>'+
                            '<td>'+ 
-                               '<input type="text" id="duration" class="form-control" placeholder="Duration"/>'+
+                               '<input type="text" id="duration" class="form-control" placeholder="Duration" name="duration[]"/>'+
                            '</td>'+
                            '<td>'+ 
-                               '<input type="text" id="drug_advice" class="form-control" placeholder="Advice"/>'+
+                               '<input type="text" id="drug_advice" class="form-control" placeholder="Advice" name="advices[]"/>'+
                            '</td>'+
                            '<td style="text-align:center"><a href="#" name="addRow" id="addRow" class="btn btn-danger remove">-</a></td>'+
                        '</tr>';
@@ -246,8 +260,9 @@
                     
                 }
 
+                
+                   
                 </script>
-
 
 
     </div>

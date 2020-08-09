@@ -45,7 +45,8 @@ class usercontroller extends Controller
                 $patID = DB::table('patient_personal')->where('cnic','=',$cnic)->value('patient_id');
 
                 
-                $res = DB::table('appointment')->where('date','=',strtotime($date))->where('patient_id','=',$patID)->get();
+                $res = DB::table('appointment')->where(['patient_id'=>$patID, 'date'=>date('Y-m-d', strtotime($date))])->get();
+                //$res = DB::table('appointment')->where(['date','=',strtotime($date),'patient_id','=',$patID])->select('appointment_id')->get();
 
                 if($res->count() == 0){
                     $value = usermodel::insert_appointment($data1, $forid);
@@ -89,20 +90,20 @@ class usercontroller extends Controller
                 $value = usermodel::insert_patient_personal($data);
               
                 $patID = DB::table('patient_personal')->where('cnic','=',$cnic)->value('patient_id');
-
-               
-                $res = DB::table('appointment')->where('patient_id','=',$patID)->where('date','=',strtotime($date))->select('appointment_id')->get();
                 
+                $res = DB::table('appointment')->where(['patient_id'=>$patID, 'date'=>date('Y-m-d', strtotime($date))])->get();
+                
+                //print($res);
                 if($res->count() == 0){
                     $value = usermodel::insert_appointment($data1, $forid);
                     
                     $patient = DB::table('patient_personal')->join('appointment', 'patient_personal.patient_id','=','appointment.patient_id')->where('date',date('Y-m-d'))->select('patient_personal.*','appointment.*')->get();
 
-                    return view('appointmentDetails', ['patient' => $patient, 'date'=>date('d-m-Y'), 'status'=>'All']);
+                    return view('appointmentDetails', ['patient' => $patient, 'date'=>date('d-m-Y'), 'status'=>'All'])->with('info', 'Appointment has been made');
                 }
                 else{
 
-                    return redirect('/newAppointmentDataForm')->with('info', 'Appointment for this ID has already been made for this date.');
+                    return redirect('/newAppointmentwithID')->with('info', 'Appointment for this ID has already been made for this date.');
 
                 }   
              }
