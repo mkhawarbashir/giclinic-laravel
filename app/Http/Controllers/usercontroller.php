@@ -50,7 +50,7 @@ class usercontroller extends Controller
 
                 if($res->count() == 0){
                     $value = usermodel::insert_appointment($data1, $forid);
-                    if($value){ 
+                    if($value==1){ 
                     return redirect('/')->with('success','Dear '. $fname . ' '. $lname . '. Your appointment for '. $date . ' at '. $time . ' has been made successfully');
                     }
                     else{

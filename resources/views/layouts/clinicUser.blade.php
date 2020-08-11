@@ -157,23 +157,45 @@
                                     type: "GET",
                                     dataType: "json",
                                     success:function(data) {
-                                        var booked = [];
-                                        var all = ['06:00 pm', '06:15 pm', '06:30 pm', '06:45 pm', '07:00 pm', '07:15 pm', '07:30 pm', '07:45 pm', '08:00 pm', '08:15 pm', '08:30 pm', '08:45 pm', '09:00 pm', '09:15 pm', '09:30 pm', '09:45 pm'];
+                                        // var booked = [];
+                                        // var all = ['06:00 pm', '06:15 pm', '06:30 pm', '06:45 pm', '07:00 pm', '07:15 pm', '07:30 pm', '07:45 pm', '08:00 pm', '08:15 pm', '08:30 pm', '08:45 pm', '09:00 pm', '09:15 pm', '09:30 pm', '09:45 pm'];
                                         
                                         var len = data.length;
                                             
-                                            $("#time").empty();
-                                            for( var i = 0; i<len; i++){
-                                                var id = data[i]['value'];
-                                                var name = data[i]['time'];
-                                                booked.push(data[i]['time']);        
-                                            }
+                                             $("#time").empty();
+                                            // for( var i = 0; i<len; i++){
+                                            //     var id = data[i]['value'];
+                                            //     var name = data[i]['time'];
+                                            //     booked.push(data[i]['time']);        
+                                            // }
 
-                                        var available = $(all).not(booked).get();
+                                            function appendLeadingZeroes(n){
+                                                if(n <= 9){
+                                                    return "0" + n;
+                                                }
+                                                    return n
+                                                }
+                                        //var available = $(all).not(booked).get();
                                         
-                                        for(var j=0; j<available.length; j++){
+                                        var len = data.length;
+                                        var ctime = new Date().toLocaleTimeString(); 
+                                        var cdate = new Date().toLocaleDateString(); 
 
-                                            $("#time").append("<option>"+available[j]+"</option>");
+                                        var current_datetime = new Date()
+                                        var formatted_date = appendLeadingZeroes(current_datetime.getDate()) + "-" + appendLeadingZeroes((current_datetime.getMonth() + 1)) + "-" + current_datetime.getFullYear()
+
+                                        
+                                        for(var j=0; j<len; j++){
+
+                                            if(mydate==formatted_date)
+                                            {
+                                                if(ctime < data[j]['slot_time']){
+
+                                                    $("#time").append("<option>"+data[j]['slot_time']+"</option>");    
+                                                }
+                                            }
+                                            else
+                                                $("#time").append("<option>"+data[j]['slot_time']+"</option>");
 
                                         }
 

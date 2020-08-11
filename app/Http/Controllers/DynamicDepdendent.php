@@ -23,9 +23,19 @@ class DynamicDepdendent extends Controller
         //console.log($qr);
         //$times = DB::select("SELECT time FROM `appointment` WHERE date='?'", [$dt]);
         //$times = DB::table("appointment")->where("date",$dt)->value('time');
-        $times = DB::table("appointment")->select('time')->where("date", $dt)->get();
-                    
-        return json_encode($times);
+        
+
+        // $out = new \Symfony\Component\Console\Output\ConsoleOutput();
+        // $out->writeln(Carbon::now()->toDayDateTimeString());
+
+        $available_slots = DB::table('time_slots')->select('slot_time')->where('date', '=', $dt)->where('availability', '=', 1)->get();
+        //print($available_slots);
+        //$times = DB::table("appointment")->select('time')->where("date", $dt)->get();
+        
+        //$c_time = Carbon::now()->toTimeString();
+        
+        
+        return json_encode($available_slots);
     }
 
     public function appointDetail(Request $request)
@@ -356,7 +366,14 @@ class DynamicDepdendent extends Controller
             }
 
             $current_date= (new Carbon($current_date))->addDays(1);
-        //    print($current_date);
+            if($current_date->isWeekend()){
+                //print($current_date);
+                $current_date= (new Carbon($current_date))->addDays(1);
+                if($current_date->isWeekend()){
+                  //  print($current_date);
+                    $current_date= (new Carbon($current_date))->addDays(1);   
+                }
+            }
         }
 
         return view('timeSlotForm');
@@ -378,7 +395,7 @@ class DynamicDepdendent extends Controller
         $availability= $request->input('availability');
         
         print($availability);
-        
+
         $data = array('availability'=>$availability);
         
         $rec = DB::table('time_slots')->where('date','=',$date)->where('slot_time','=',$slot_time)->update($data);

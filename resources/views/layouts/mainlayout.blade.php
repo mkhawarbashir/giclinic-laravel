@@ -193,30 +193,52 @@
                             format: 'dd-mm-yyyy'
                             }).on('changeDate', function(e) {
                                 var mydate = $(this).val();
-                                console.log(mydate);
+                                //console.log(mydate);
                             if(mydate) {
                                 $.ajax({
                                     url: '/welcome/ajax/'+mydate,
                                     type: "GET",
                                     dataType: "json",
                                     success:function(data) {
-                                        var booked = [];
-                                        var all = ['06:00 pm', '06:15 pm', '06:30 pm', '06:45 pm', '07:00 pm', '07:15 pm', '07:30 pm', '07:45 pm', '08:00 pm', '08:15 pm', '08:30 pm', '08:45 pm', '09:00 pm', '09:15 pm', '09:30 pm', '09:45 pm'];
+                                      // var booked = [];
+                                        // var all = ['06:00 pm', '06:15 pm', '06:30 pm', '06:45 pm', '07:00 pm', '07:15 pm', '07:30 pm', '07:45 pm', '08:00 pm', '08:15 pm', '08:30 pm', '08:45 pm', '09:00 pm', '09:15 pm', '09:30 pm', '09:45 pm'];
                                         
+                                       
+                                        //console.log(ctime);               
+                                             $("#time").empty();
+                                            // for( var i = 0; i<len; i++){
+                                            //     var id = data[i]['value'];
+                                            //     var name = data[i]['time'];
+                                            //     booked.push(data[i]['time']);        
+                                            // }
+
+                                            function appendLeadingZeroes(n){
+                                                if(n <= 9){
+                                                    return "0" + n;
+                                                }
+                                                    return n
+                                                }
+                                        //var available = $(all).not(booked).get();
+                                       
                                         var len = data.length;
-                                            
-                                            $("#time").empty();
-                                            for( var i = 0; i<len; i++){
-                                                var id = data[i]['value'];
-                                                var name = data[i]['time'];
-                                                booked.push(data[i]['time']);        
-                                            }
+                                        var ctime = new Date().toLocaleTimeString(); 
+                                        var cdate = new Date().toLocaleDateString(); 
 
-                                        var available = $(all).not(booked).get();
+                                        var current_datetime = new Date()
+                                        var formatted_date = appendLeadingZeroes(current_datetime.getDate()) + "-" + appendLeadingZeroes((current_datetime.getMonth() + 1)) + "-" + current_datetime.getFullYear()
+
                                         
-                                        for(var j=0; j<available.length; j++){
+                                        for(var j=0; j<len; j++){
 
-                                            $("#time").append("<option>"+available[j]+"</option>");
+                                            if(mydate==formatted_date)
+                                            {
+                                                if(ctime < data[j]['slot_time']){
+
+                                                    $("#time").append("<option>"+data[j]['slot_time']+"</option>");    
+                                                }
+                                            }
+                                            else
+                                                $("#time").append("<option>"+data[j]['slot_time']+"</option>");
 
                                         }
 
